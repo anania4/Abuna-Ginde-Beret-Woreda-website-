@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+    --color-woreda-green: #006400;
+    --color-woreda-brown: #8B4513;
+    --color-woreda-orange: #D2691E;
+    --color-woreda-blue: #1E90FF;
+
+    --font-sans: "Roboto", "Noto Sans Ethiopic", sans-serif;
+    --font-heading: "Roboto", "Noto Sans Ethiopic", sans-serif;
+}
+
+/* Custom Utilities for nice fade-ins if needed, though Tailwind has some */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
