@@ -195,3 +195,12 @@
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
+
+/* Murder Board Specifics */
+@media (min-width: 1024px) {
+    .murder-board-grid {
+        /* Optional: Add a subtle cork texture or background if desired */
+        background-image: radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.02) 1px, transparent 0);
+        background-size: 24px 24px;
+    }
+}

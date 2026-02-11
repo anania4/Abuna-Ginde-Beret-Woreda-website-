@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrative Divisions - Abuna Ginde Beret</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <div id="app">
+        <!-- Header -->
+        <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md py-4 border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <a href="/" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+                        <div
+                            class="w-10 h-10 bg-woreda-green rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:bg-green-700 transition-colors">
+                            A
+                        </div>
+                        <div>
+                            <h1
+                                class="text-xl font-bold text-gray-900 leading-tight group-hover:text-woreda-green transition-colors">
+                                Abuna Ginde Beret</h1>
+                            <p class="text-xs text-woreda-green font-medium">Woreda Administration</p>
+                        </div>
+                    </a>
+
+                    <nav class="hidden md:flex items-center gap-4">
+                        <a href="/"
+                            class="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-all flex items-center gap-2 lang-switchable"
+                            data-am="ወደ ዋና ገጽ ተመለስ" data-om="Gara Manaatti Deebi'i">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            Back to Home
+                        </a>
+                        <button id="lang-toggle-desktop"
+                            class="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm text-woreda-green rounded-full font-bold border border-woreda-green/20 hover:bg-white transition-all shadow-sm group">
+                            <svg class="w-5 h-5 text-woreda-green group-hover:rotate-180 transition-transform duration-500"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 0h7M11 21l5-10 5 10M12.751 5C11.783 11.37 9.188 16.503 5 20" />
+                            </svg>
+                            <span id="lang-label">AM / OM</span>
+                        </button>
+                    </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn"
+                            class="text-gray-600 hover:text-woreda-green focus:outline-none p-2">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu"
+                class="fixed inset-0 z-50 bg-white/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8">
+                <button id="close-menu-btn" class="absolute top-6 right-6 text-gray-500 hover:text-red-500">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+
+                <a href="/" class="text-3xl font-bold text-gray-800 hover:text-woreda-green transition-colors">Home</a>
+                <button id="lang-toggle-mobile"
+                    class="mt-4 px-8 py-3 bg-white border-2 border-woreda-green text-woreda-green text-xl rounded-full font-bold shadow-lg flex items-center gap-3 active:scale-95 transition-all lang-switchable"
+                    data-am="ቋንቋ ቀይር (አማ/ኦሮ)" data-om="Qooqqa Jijjiirii (AM/OM)">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 0h7M11 21l5-10 5 10M12.751 5C11.783 11.37 9.188 16.503 5 20" />
+                    </svg>
+                    Switch Language (AM/OM)
+                </button>
+            </div>
+        </header>
+
+        <!-- Global Animated Background (Fixed) -->
+        <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-orange-50 opacity-80"></div>
+            <div
+                class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+            </div>
+            <div
+                class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+            </div>
+        </div>
+
+        <main class="relative z-10 pt-32 pb-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Administrative Divisions</h2>
+                    <p class="text-xl text-woreda-green font-medium mb-2 lang-switchable" data-am="የአስተዳደር ክፍሎች"
+                        data-om="Caasaalee Bulchiinsaa">የአስተዳደር ክፍሎች</p>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Comprehensive directory of the 44 kebeles (3 Urban Centers and 41 Rural Kebeles)
+                        that make up the Abuna Ginde Beret Woreda.
+                    </p>
+                </div>
+
+                <!-- Urban Centers -->
+                <div class="mb-20">
+                    <div class="flex items-center justify-center gap-4 mb-10">
+                        <div class="h-px w-12 bg-gray-300"></div>
+                        <h3 class="text-2xl font-bold text-gray-800 lang-switchable" data-am="ከተማ አስተዳደር"
+                            data-om="Bulchiinsa Magaalaa">Urban Centers (ከተማ አስተዳደር)</h3>
+                        <div class="h-px w-12 bg-gray-300"></div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8 reveal-parent active">
+                        <!-- Beke Kelate -->
+                        <div
+                            class="p-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] border border-gray-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 group reveal-child">
+                            <div
+                                class="w-16 h-16 bg-woreda-green/10 rounded-2xl flex items-center justify-center text-woreda-green mb-6 group-hover:scale-110 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            </div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-1">Beke Kelate</h4>
+                            <p class="text-woreda-green font-bold mb-4 lang-switchable" data-am="በኬ ቀላጤ"
+                                data-om="Beekee Qalaaxee">በኬ ቀላጤ</p>
+                            <div
+                                class="pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
+                                <span>Administrative Center</span>
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            </div>
+                        </div>
+                        <!-- Bite Haro -->
+                        <div
+                            class="p-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] border border-gray-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 group reveal-child">
+                            <div
+                                class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-woreda-blue mb-6 group-hover:scale-110 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                            </div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-1">Bite Haro</h4>
+                            <p class="text-woreda-blue font-bold mb-4 lang-switchable" data-am="ቢቴ ሐሮ"
+                                data-om="Biitee Haroo">ቢቴ ሐሮ</p>
+                            <div
+                                class="pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
+                                <span>Emerging Municipality</span>
+                                <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            </div>
+                        </div>
+                        <!-- Goro Furto -->
+                        <div
+                            class="p-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] border border-gray-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 group reveal-child">
+                            <div
+                                class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-woreda-orange mb-6 group-hover:scale-110 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-1">Goro Furto</h4>
+                            <p class="text-woreda-orange font-bold mb-4 lang-switchable" data-am="ጎሮ ፉርጦ"
+                                data-om="Gooroo Furtoo">ጎሮ ፉርጦ</p>
+                            <div
+                                class="pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
+                                <span>Emerging Municipality</span>
+                                <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rural Kebeles Grid -->
+                <div>
+                    <div class="flex items-center justify-center gap-4 mb-10">
+                        <div class="h-px w-12 bg-gray-300"></div>
+                        <h3 class="text-2xl font-bold text-gray-800 lang-switchable" data-am="የገጠር ቀበሌዎች"
+                            data-om="Ganda Baadiyaa">Rural Kebeles (የገጠር ቀበሌዎች)</h3>
+                        <div class="h-px w-12 bg-gray-300"></div>
+                    </div>
+
+                    <div
+                        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 reveal-parent active">
+                        <!-- Rural Cards -->
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">01</span>
+                            <p class="font-bold text-gray-900">Erjajo</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ኤርጃጆ" data-om="Erjaajoo">ኤርጃጆ
+                            </p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">02</span>
+                            <p class="font-bold text-gray-900">Haro</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ሐሮ" data-om="Haaroo">ሐሮ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">03</span>
+                            <p class="font-bold text-gray-900">Gitire Kichu</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጊቲሬ ኪቹ"
+                                data-om="Gitiree Kichuu">ጊቲሬ ኪቹ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">04</span>
+                            <p class="font-bold text-gray-900">Danisa Hula Burki</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ዳኒሳ ሁላ ቡርኪ"
+                                data-om="Daniisa Huullaa Burkii">ዳኒሳ ሁላ ቡርኪ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">05</span>
+                            <p class="font-bold text-gray-900">Obora</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ኦቦራ" data-om="Oboraa">ኦቦራ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">06</span>
+                            <p class="font-bold text-gray-900">Jemo Fino</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጄሞ ፊኖ"
+                                data-om="Jeemoo Fiinoo">ጄሞ ፊኖ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">07</span>
+                            <p class="font-bold text-gray-900">Wolensu</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ወለንሱ" data-om="Walansuu">ወለንሱ
+                            </p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">08</span>
+                            <p class="font-bold text-gray-900">Yegot</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="የጎት" data-om="Yagoot">የጎት</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">09</span>
+                            <p class="font-bold text-gray-900">Gerbi Gole</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ገርቢ ጎሌ" data-om="Gerbi Golee">
+                                ገርቢ ጎሌ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">10</span>
+                            <p class="font-bold text-gray-900">Kono</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ኮኖ" data-om="Konoo">ኮኖ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">11</span>
+                            <p class="font-bold text-gray-900">Gute Andode</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጉቴ አንዶዴ"
+                                data-om="Guutee Andoodee">ጉቴ አንዶዴ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">12</span>
+                            <p class="font-bold text-gray-900">Buketo Kere Dibar</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ቡኬቶ ከሬ ዲባር"
+                                data-om="Bukeetoo Karee Diibaar">ቡኬቶ ከሬ ዲባር</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">13</span>
+                            <p class="font-bold text-gray-900">Dire Kegni</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ዲሬ ኬኝ" data-om="Diiree Keeñ">
+                                ዲሬ ኬኝ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">14</span>
+                            <p class="font-bold text-gray-900">Debeka</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ደበካ" data-om="Dabbakaa">ደበካ
+                            </p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">15</span>
+                            <p class="font-bold text-gray-900">Dogoma Yegot</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ዶጎማ የጎት"
+                                data-om="Dogomaa Yagoot">ዶጎማ የጎት</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">16</span>
+                            <p class="font-bold text-gray-900">Dogoma Kibi</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ዶጎማ ኪቢ"
+                                data-om="Dogomaa Kibbi">ዶጎማ ኪቢ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">17</span>
+                            <p class="font-bold text-gray-900">Gertoke</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ገርቶኬ" data-om="Gertookee">ገርቶኬ
+                            </p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">18</span>
+                            <p class="font-bold text-gray-900">Kolu</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ኮሉ" data-om="Koluu">ኮሉ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">19</span>
+                            <p class="font-bold text-gray-900">Guduru</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጉዱሩ" data-om="Guduruu">ጉዱሩ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">20</span>
+                            <p class="font-bold text-gray-900">Goro Bate</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጎሮ ባቴ"
+                                data-om="Gooroo Baatee">ጎሮ ባቴ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">21</span>
+                            <p class="font-bold text-gray-900">Goro Dokonu</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጎሮ ዶኮኑ"
+                                data-om="Gooro Dokonu">ጎሮ ዶኮኑ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">22</span>
+                            <p class="font-bold text-gray-900">Dokonu Sure</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ዶኮኑ ሱሬ"
+                                data-om="Dokonu Surree">ዶኮኑ ሱሬ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">23</span>
+                            <p class="font-bold text-gray-900">Goho Guduru</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጎሆ ጉዱሩ"
+                                data-om="Goho Guduruu">ጎሆ ጉዱሩ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">24</span>
+                            <p class="font-bold text-gray-900">Wilo Jegenfo</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ዊሎ ጄገንፎ"
+                                data-om="Wilo Jeganfoo">ዊሎ ጄገንፎ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">25</span>
+                            <p class="font-bold text-gray-900">Doksa Goro Diko</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ዶክሳ ጎሮ ዲኮ"
+                                data-om="Doksa Gooro Diiko">ዶክሳ ጎሮ ዲኮ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">26</span>
+                            <p class="font-bold text-gray-900">Gago Bite</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጋጎ ቢቴ"
+                                data-om="Gaaggo Biitee">ጋጎ ቢቴ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">27</span>
+                            <p class="font-bold text-gray-900">Gago Osole</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጋጎ ኦሶሌ"
+                                data-om="Gaaggo Osoolee">ጋጎ ኦሶሌ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">28</span>
+                            <p class="font-bold text-gray-900">Gajo Bedesa</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጋጆ በደሳ"
+                                data-om="Gaajjo Baddasaa">ጋጆ በደሳ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">29</span>
+                            <p class="font-bold text-gray-900">Insilale Gajo</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="እንስላሌ ጋጆ"
+                                data-om="Insilale Gaajjo">እንስላሌ ጋጆ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">30</span>
+                            <p class="font-bold text-gray-900">Kere Cheka</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ከሬ ቸካ" data-om="Karee Chekaa">
+                                ከሬ ቸካ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">31</span>
+                            <p class="font-bold text-gray-900">Kere Bite</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ከሬ ቢቴ" data-om="Karee Biitee">
+                                ከሬ ቢቴ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">32</span>
+                            <p class="font-bold text-gray-900">Bedesa Dembi</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="በደሳ ደምቢ"
+                                data-om="Baddasaa Dembi">በደሳ ደምቢ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">33</span>
+                            <p class="font-bold text-gray-900">Ogobe Gajo</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ኦጎቤ ጋጆ"
+                                data-om="Ogobee Gaajjo">ኦጎቤ ጋጆ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">34</span>
+                            <p class="font-bold text-gray-900">Mendida Sole</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="መንዲዳ ሶሌ"
+                                data-om="Mandida Sole">መንዲዳ ሶሌ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">35</span>
+                            <p class="font-bold text-gray-900">Mendida Tunjiti</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="መንዲዳ ቱንጂቲ"
+                                data-om="Mandida Tunjiti">መንዲዳ ቱንጂቲ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">36</span>
+                            <p class="font-bold text-gray-900">Mudema Dega Tina</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ሙደማ ደጋ ቲና"
+                                data-om="Mudamaa Daggaa Tiinaa">ሙደማ ደጋ ቲና</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">37</span>
+                            <p class="font-bold text-gray-900">Guto Sombo</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጉቶ ሶምቦ"
+                                data-om="Guutoo Sombbo">ጉቶ ሶምቦ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">38</span>
+                            <p class="font-bold text-gray-900">Ereri Kenjo</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ኤረሪ ኬንጆ"
+                                data-om="Eerari Keonjoo">ኤረሪ ኬንጆ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">39</span>
+                            <p class="font-bold text-gray-900">Chefe Ereri</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጨፌ ኤረሪ"
+                                data-om="Caffee Eerari">ጨፌ ኤረሪ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">40</span>
+                            <p class="font-bold text-gray-900">Bedesa Chando</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="በደሳ ቻንዶ"
+                                data-om="Baddasaa Chandoo">በደሳ ቻንዶ</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:bg-white text-center group reveal-child">
+                            <span
+                                class="block text-xs font-bold text-gray-400 mb-1 group-hover:text-woreda-green">41</span>
+                            <p class="font-bold text-gray-900">Goro Jalete</p>
+                            <p class="text-[10px] text-gray-500 lang-switchable" data-am="ጎሮ ጃለቴ"
+                                data-om="Gooroo Jallattee">ጎሮ ጃለቴ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-white text-black py-20 border-t border-gray-300 relative z-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div
+                    class="border-t border-gray-300 pt-8 text-center text-black font-black text-sm uppercase tracking-widest">
+                    &copy; 2026 Abuna Ginde Beret Woreda Administration. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

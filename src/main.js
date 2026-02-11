@@ -201,3 +201,42 @@ window.closeProjectModal = function () {
 
 if (modalCloseBtn) modalCloseBtn.onclick = window.closeProjectModal;
 if (modalBackdrop) modalBackdrop.onclick = window.closeProjectModal;
+
+// --- Language Toggle Logic ---
+const langToggleDesktop = document.getElementById('lang-toggle-desktop');
+const langToggleMobile = document.getElementById('lang-toggle-mobile');
+const langLabel = document.getElementById('lang-label');
+
+let currentLang = localStorage.getItem('preferredLang') || 'am';
+
+function applyLanguage(lang) {
+  const elements = document.querySelectorAll('.lang-switchable');
+  elements.forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text) {
+      el.innerText = text;
+    }
+  });
+
+  // Update Toggle Button label
+  if (langLabel) {
+    langLabel.innerText = lang === 'am' ? 'AM / OM' : 'OM / AM';
+  }
+}
+
+function toggleLanguage() {
+  currentLang = currentLang === 'am' ? 'om' : 'am';
+  localStorage.setItem('preferredLang', currentLang);
+  applyLanguage(currentLang);
+}
+
+if (langToggleDesktop) {
+  langToggleDesktop.addEventListener('click', toggleLanguage);
+}
+
+if (langToggleMobile) {
+  langToggleMobile.addEventListener('click', toggleLanguage);
+}
+
+// Apply immediately on script load
+applyLanguage(currentLang);

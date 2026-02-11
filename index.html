@@ -64,10 +64,15 @@
               <span
                 class="absolute left-0 -bottom-1 w-0 h-0.5 bg-woreda-green transition-all group-hover:w-full"></span>
             </a>
-            <a href="#contact"
-              class="px-5 py-2.5 bg-woreda-green text-white rounded-full font-medium hover:bg-green-800 hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
-              Contact Us
-            </a>
+            <button id="lang-toggle-desktop"
+              class="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm text-woreda-green rounded-full font-bold border border-woreda-green/20 hover:bg-white transition-all shadow-sm group">
+              <svg class="w-5 h-5 text-woreda-green group-hover:rotate-180 transition-transform duration-500"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 0h7M11 21l5-10 5 10M12.751 5C11.783 11.37 9.188 16.503 5 20" />
+              </svg>
+              <span id="lang-label">AM / OM</span>
+            </button>
           </nav>
 
           <!-- Mobile Menu Button -->
@@ -100,9 +105,14 @@
           class="text-3xl font-bold text-gray-800 hover:text-woreda-green transition-colors mobile-link">Services</a>
         <a href="#gallery"
           class="text-3xl font-bold text-gray-800 hover:text-woreda-green transition-colors mobile-link">Gallery</a>
-        <a href="#contact"
-          class="px-8 py-3 bg-woreda-green text-white text-xl rounded-full shadow-lg hover:bg-green-700 transition-colors mobile-link">Contact
-          Us</a>
+        <button id="lang-toggle-mobile"
+          class="mt-4 px-8 py-3 bg-white border-2 border-woreda-green text-woreda-green text-xl rounded-full font-bold shadow-lg flex items-center gap-3 active:scale-95 transition-all">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 0h7M11 21l5-10 5 10M12.751 5C11.783 11.37 9.188 16.503 5 20" />
+          </svg>
+          Switch Language (AM/OM)
+        </button>
       </div>
     </header>
 
@@ -139,7 +149,8 @@
           <div class="animate-float">
             <span
               class="inline-block px-4 py-1.5 bg-white/80 backdrop-blur-md text-woreda-green rounded-full text-sm font-bold tracking-wide uppercase shadow-lg border border-white/50">
-              Welcome • እንኳን ደህና መጡ
+              Welcome • <span class="lang-switchable" data-am="እንኳን ደህና መጡ" data-om="Baga Nagaan Huftan">እንኳን ደህና
+                መጡ</span>
             </span>
           </div>
 
@@ -153,7 +164,8 @@
           </h1>
 
           <!-- Subheadline Amharic -->
-          <p class="text-2xl md:text-3xl text-gray-700 font-light max-w-3xl mx-auto animate-pulse-slow">
+          <p class="text-2xl md:text-3xl text-gray-700 font-light max-w-3xl mx-auto animate-pulse-slow lang-switchable"
+            data-am="እንኳን ወደ አቡና ጊንደበረቱ ወረዳ በደህና መጡ" data-om="Baga gara Aanaa Abuna Gindabaratitti nagaan dhuftan">
             እንኳን ወደ አቡና ጊንደበረቱ ወረዳ በደህና መጡ
           </p>
 
@@ -218,7 +230,8 @@
           <div class="flex justify-between items-end mb-8">
             <div>
               <h2 class="text-3xl font-bold text-gray-900">Latest Updates</h2>
-              <p class="text-lg text-woreda-green font-medium mt-1">የቅርብ ጊዜ ዜናዎች</p>
+              <p class="text-lg text-woreda-green font-medium mt-1 lang-switchable" data-am="የቅርብ ጊዜ ዜናዎች"
+                data-om="Oduuwwan Ammee">የቅርብ ጊዜ ዜናዎች</p>
             </div>
             <a href="#"
               class="hidden sm:inline-flex items-center text-woreda-blue hover:text-blue-700 font-medium transition-colors">
@@ -307,7 +320,9 @@
               </div>
               <div class="p-6">
                 <div class="text-xs text-gray-500 mb-2">September 28, 2025</div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-woreda-green transition-colors">
+                <h3
+                  class="text-xl font-bold text-gray-900 mb-2 group-hover:text-woreda-green transition-colors lang-switchable"
+                  data-am="ለእናቶች እና ህፃናት ማህበረሰብ ጤና ዘመቻ" data-om="Duula Fayyaa Hawaasaa Haadholii fi Daa'immanii">
                   Community Health Campaign for Mothers and Children
                 </h3>
                 <p class="text-gray-600 line-clamp-3">
@@ -320,7 +335,8 @@
           </div>
           <div class="mt-8 text-center sm:hidden">
             <a href="#"
-              class="inline-flex items-center text-woreda-blue hover:text-blue-700 font-medium transition-colors">
+              class="inline-flex items-center text-woreda-blue hover:text-blue-700 font-medium transition-colors lang-switchable"
+              data-am="ሁሉንም ዜናዎች ተመልከት" data-om="Oduu Hundumaa Ilaali">
               View All News
               <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
@@ -336,7 +352,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">About Abuna Ginde Beret</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto lang-switchable"
+              data-am="የተለያዩ መልከአ ምድር፣ የበለጸገ ባህላዊ ቅርስ እና ለዘላቂ እድገት ቁርጠኛ የሆኑ ታታሪ ህዝቦች ምድር።"
+              data-om="Lafa bifa garagaraa, dhaalmaya aadaa badhaadhaa fi hawaasa hojii jaallatu kan misooma waaraadhaof of kenne.">
               A land of diverse landscapes, rich cultural heritage, and hardworking people committed to sustainable
               growth.
             </p>
@@ -347,22 +365,26 @@
             <div
               class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-woreda-green text-center hover:-translate-y-1 transition-transform duration-300">
               <div class="text-4xl font-bold text-woreda-green mb-2">150k+</div>
-              <div class="text-gray-600 font-medium">Residents</div>
+              <div class="text-gray-600 font-medium lang-switchable" data-am="ነዋሪዎች" data-om="Jiraattota">Residents
+              </div>
             </div>
             <div
               class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-woreda-orange text-center hover:-translate-y-1 transition-transform duration-300">
               <div class="text-4xl font-bold text-woreda-orange mb-2">90%</div>
-              <div class="text-gray-600 font-medium">Agriculture Based</div>
+              <div class="text-gray-600 font-medium lang-switchable" data-am="በግብርና ላይ የተመሰረተ"
+                data-om="Qonna irratti kan hundaa'e">Agriculture Based</div>
             </div>
             <div
               class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-woreda-blue text-center hover:-translate-y-1 transition-transform duration-300">
               <div class="text-4xl font-bold text-woreda-blue mb-2">44</div>
-              <div class="text-gray-600 font-medium">Kebeles (41 Rural, 3 Urban)</div>
+              <div class="text-gray-600 font-medium lang-switchable" data-am="ቀበሌዎች (41 ገጠር፣ 3 ከተማ)"
+                data-om="Ganda (41 Baadiyaa, 3 Magaalaa)">Kebeles (41 Rural, 3 Urban)</div>
             </div>
             <div
               class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-yellow-500 text-center hover:-translate-y-1 transition-transform duration-300">
               <div class="text-4xl font-bold text-yellow-600 mb-2">#1</div>
-              <div class="text-gray-600 font-medium">Honey Production</div>
+              <div class="text-gray-600 font-medium lang-switchable" data-am="የማር ምርት" data-om="Oomisha Dammaa">Honey
+                Production</div>
             </div>
           </div>
 
@@ -377,8 +399,11 @@
                 </svg>
               </div>
               <div class="ml-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Agricultural Excellence</h3>
-                <p class="text-gray-600">Leading in sustainable farming practices, specifically in coffee, teff, and
+                <h3 class="text-lg font-bold text-gray-900 mb-2 lang-switchable" data-am="ምርጥ የግብርና ስራ"
+                  data-om="Milkaa'ina Qonnaa">Agricultural Excellence</h3>
+                <p class="text-gray-600 lang-switchable" data-am="በዘላቂ የግብርና ልምዶች፣ በተለይም በቡና፣ በጤፍ እና በምርጥ የማር ምርት የታወቀ።"
+                  data-om="Hojii qonnaa waaraa, keessattuu bunna, xaafii fi oomisha damma olaanaadhaan kan beekamu.">
+                  Leading in sustainable farming practices, specifically in coffee, teff, and
                   known for premium honey production.</p>
               </div>
             </div>
@@ -441,6 +466,8 @@
         </div>
 
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <h2 class="text-3xl font-bold mb-6 lang-switchable" data-am="መልዕክት ከመሪዎቻችን" data-om="Dhaamsa Bulchiinsaa">
+            Administrator Message</h2>
           <svg class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-6 text-green-200 opacity-80" fill="currentColor"
             viewBox="0 0 24 24">
             <path
@@ -469,7 +496,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-900">Voice of the People</h2>
-            <p class="text-lg text-woreda-green font-medium mt-1">የህዝብ ድምፅ</p>
+            <p class="text-lg text-woreda-green font-medium mt-1 lang-switchable" data-am="የህዝብ ድምፅ"
+              data-om="Sagalee Ummataa">የህዝብ ድምፅ</p>
           </div>
 
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -529,317 +557,466 @@
         </div>
       </section>
 
-      <!-- Government Sectors -->
-      <section id="sectors" class="py-16 bg-white/80 backdrop-blur-sm reveal">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-12">
+      <!-- Government Sectors (Murder Board Redesign) -->
+      <section id="sectors" class="py-24 bg-white/40 backdrop-blur-md border-t border-gray-100 overflow-hidden reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div class="text-center mb-20 relative z-20">
             <h2 class="text-3xl font-bold text-gray-900">Government Sectors</h2>
-            <p class="text-lg text-woreda-green font-medium mt-1">የመንግሥት ዘርፎች</p>
-            <p class="text-gray-600 max-w-2xl mx-auto mt-4">Abuna Gindeberet Woreda is organized into 19 key offices
-              serving the community across all sectors.</p>
+            <p class="text-lg text-woreda-green font-medium mt-1 lang-switchable" data-am="የመንግሥት ዘርፎች"
+              data-om="Dameewwan Mootummaa">የመንግሥት ዘርፎች</p>
+            <p class="text-gray-600 max-w-2xl mx-auto mt-4">Exploring the interconnected network of administrative
+              offices serving Abuna Ginde Beret.</p>
           </div>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 reveal-parent">
-            <!-- 1 -->
-            <div
-              class="p-5 bg-white/90 rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-green/40 transition-all group hover-card-3d reveal-child">
-              <div class="flex items-center gap-3 mb-2">
+
+          <!-- Murder Board Container -->
+          <div class="relative min-h-[1200px] md:min-h-[1000px] lg:min-h-[900px] murder-board-grid lg:block hidden">
+            <!-- Pinned Cards (Scattered) -->
+
+            <!-- Card 1: Administration -->
+            <div class="absolute top-[5%] left-[10%] rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-woreda-green/10 rounded-lg flex items-center justify-center text-woreda-green flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
-                    </path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-green bg-woreda-green/10 px-2 py-0.5 rounded-full">01</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full shadow-inner border-t border-red-400">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-10 h-10 bg-woreda-green/10 rounded-lg flex items-center justify-center text-woreda-green">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-xs font-bold text-woreda-green bg-woreda-green/10 px-2 py-0.5 rounded-full">01</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-green transition-colors lang-switchable"
+                  data-am="የአስተዳደር ጽሕፈት ቤት" data-om="Waajjira Bulchiinsaa">Administration Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-green transition-colors">Administration Office
-              </h3>
             </div>
-            <!-- 2 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-brown/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 2: House Office -->
+            <div class="absolute top-[8%] left-[40%] -rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-woreda-brown/10 rounded-lg flex items-center justify-center text-woreda-brown flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-brown bg-woreda-brown/10 px-2 py-0.5 rounded-full">02</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-4 bg-yellow-400/30 backdrop-blur-sm border border-yellow-200 rotate-12">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-10 h-10 bg-woreda-brown/10 rounded-lg flex items-center justify-center text-woreda-brown">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-xs font-bold text-woreda-brown bg-woreda-brown/10 px-2 py-0.5 rounded-full">02</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-brown transition-colors lang-switchable"
+                  data-am="የምክር ቤት ጽ/ቤት" data-om="Waajjira Mana Maree">የምክር ቤት ጽ/ቤት</h3>
+                <p class="text-xs text-gray-500 mt-1">The House Office</p>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-brown transition-colors">የምክር ቤት ጽ/ቤት</h3>
-              <p class="text-xs text-gray-500 mt-1">The House Office</p>
             </div>
-            <!-- 3 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-green-600/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 3: Agriculture -->
+            <div class="absolute top-[18%] left-[65%] rotate-3 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-700 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">03</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-blue-600 rounded-full shadow-inner border-t border-blue-400">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-700">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">03</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-green-700 transition-colors lang-switchable"
+                  data-am="የግብርና እና የመሬት ጽ/ቤት" data-om="Waajjira Qonnaafi Lafaa">Agriculture & Land Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-green-700 transition-colors">Agriculture & Land Office
-              </h3>
             </div>
-            <!-- 4 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-orange/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 4: Road & Logistics -->
+            <div class="absolute top-[32%] left-[15%] -rotate-1 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-woreda-orange flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-orange bg-orange-100 px-2 py-0.5 rounded-full">04</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-4 bg-gray-400/20 backdrop-blur-sm border border-gray-200 -rotate-12">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-woreda-orange">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-woreda-orange bg-orange-100 px-2 py-0.5 rounded-full">04</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-orange transition-colors lang-switchable"
+                  data-am="የመንገድና ሎጅስቲክስ ጽ/ቤት" data-om="Waajjira Daandiiwwanii">Road & Logistics Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-orange transition-colors">Road & Logistics
-                Office</h3>
             </div>
-            <!-- 5 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-purple-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 5: Busa Gonofa -->
+            <div class="absolute top-[35%] left-[45%] rotate-1 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">05</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full shadow-inner border-t border-red-400">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">05</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-purple-600 transition-colors lang-switchable"
+                  data-am="የቡሳ ጎኖፋ ጽ/ቤት" data-om="Waajjira Buusaa Gonofaa">Busa Gonofa Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-purple-600 transition-colors">Busa Gonofa Office</h3>
             </div>
-            <!-- 6 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-blue/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+            <!-- Card 6: Finance -->
+            <div class="absolute top-[45%] left-[70%] rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-woreda-blue flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-woreda-blue bg-blue-100 px-2 py-0.5 rounded-full">06</span>
+                  class="absolute -top-3 left-1/3 w-3 h-3 bg-blue-500 rounded-full shadow-inner border-t border-blue-300">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-woreda-blue">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-woreda-blue bg-blue-100 px-2 py-0.5 rounded-full">06</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-blue transition-colors lang-switchable"
+                  data-am="የገንዘብ ጽ/ቤት" data-om="Waajjira Maallaqaa">Finance Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-blue transition-colors">Finance Office</h3>
             </div>
-            <!-- 7 -->
-            <div
-              class="p-5 bg-white/90 rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-green/40 transition-all group hover-card-3d reveal-child">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 7: Peace & Militia -->
+            <div class="absolute top-[52%] left-[30%] rotate-3 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-woreda-green/10 rounded-lg flex items-center justify-center text-woreda-green flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                    </path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-green bg-woreda-green/10 px-2 py-0.5 rounded-full">07</span>
+                  class="absolute top-2 -left-3 w-8 h-4 bg-gray-300/30 backdrop-blur-sm border border-gray-200 -rotate-45">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-10 h-10 bg-woreda-green/10 rounded-lg flex items-center justify-center text-woreda-green">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-xs font-bold text-woreda-green bg-woreda-green/10 px-2 py-0.5 rounded-full">07</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-green transition-colors lang-switchable"
+                  data-am="የሰላምና ጸጥታ ጽ/ቤት" data-om="Waajjira Nagaafi Tasgabbii">Peace & Militia Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-green transition-colors">Peace & Militia Office
-              </h3>
             </div>
-            <!-- 8 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-red-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 8: Health -->
+            <div class="absolute top-[58%] left-[7%] -rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-red-600 bg-red-100 px-2 py-0.5 rounded-full">08</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-500 rounded-full shadow-inner border-t border-red-300">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-red-600 bg-red-100 px-2 py-0.5 rounded-full">08</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-red-600 transition-colors lang-switchable"
+                  data-am="የጤና ጽ/ቤት" data-om="Waajjira Fayyaa">Health Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-red-600 transition-colors">Health Office</h3>
             </div>
-            <!-- 9 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-teal-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 9: People's Issues -->
+            <div class="absolute top-[65%] left-[42%] rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center text-teal-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-teal-600 bg-teal-100 px-2 py-0.5 rounded-full">09</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-4 bg-teal-400/20 backdrop-blur-sm border border-teal-200 rotate-6">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center text-teal-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-teal-600 bg-teal-100 px-2 py-0.5 rounded-full">09</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-teal-600 transition-colors lang-switchable"
+                  data-am="የህዝብ ተሳትፎ ድርጅት" data-om="Gurmaa'insaa Ummataa">People's Issues Organisation Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-teal-600 transition-colors">People's Issues
-                Organisation Office</h3>
             </div>
-            <!-- 10 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-indigo-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 10: Education -->
+            <div class="absolute top-[72%] left-[12%] rotate-1 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full">10</span>
+                  class="absolute -top-3 left-1/4 w-3 h-3 bg-indigo-500 rounded-full shadow-inner border-t border-indigo-300">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full">10</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors lang-switchable"
+                  data-am="የትምህርት ጽ/ቤት" data-om="Waajjira Barnootaa">Education Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Education Office</h3>
             </div>
-            <!-- 11 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-orange/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 11: Trade & Investment -->
+            <div class="absolute top-[75%] left-[68%] -rotate-3 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-woreda-orange flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                    </path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-orange bg-orange-100 px-2 py-0.5 rounded-full">11</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-5 bg-orange-400/30 backdrop-blur-sm border border-orange-200 -rotate-12">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-woreda-orange">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-woreda-orange bg-orange-100 px-2 py-0.5 rounded-full">11</span>
+                </div>
+                <h3
+                  class="font-bold text-gray-900 group-hover:text-woreda-orange transition-colors text-sm lang-switchable"
+                  data-am="የንግድና ኢንቨስትመንት ጽ/ቤት" data-om="Daldalaafi Invastimantii">Trade, Job Creation & Investment
+                  Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-orange transition-colors text-sm">Trade, Job
-                Creation & Investment Office</h3>
             </div>
-            <!-- 12 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-emerald-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+            <!-- Card 12: Revenues -->
+            <div class="absolute top-[80%] left-[35%] rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">12</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-emerald-500 rounded-full shadow-inner border-t border-emerald-300">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">12</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors lang-switchable"
+                  data-am="የገቢዎች ጽ/ቤት" data-om="Waajjira Galiiwwanii">Revenues Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">Revenues Office</h3>
             </div>
-            <!-- 13 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-cyan-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 13: Water, Mineral & Energy -->
+            <div class="absolute top-[82%] left-[5%] -rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
-                </div><span class="text-xs font-bold text-cyan-600 bg-cyan-100 px-2 py-0.5 rounded-full">13</span>
+                  class="absolute top-1/2 -right-4 w-10 h-4 bg-cyan-400/20 backdrop-blur-sm border border-cyan-200 rotate-90">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-cyan-600 bg-cyan-100 px-2 py-0.5 rounded-full">13</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-cyan-600 transition-colors lang-switchable"
+                  data-am="የውሃና ኢነርጂ ጽ/ቤት" data-om="Waajjira Bishaanifi Inarji">Water, Mineral & Energy Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-cyan-600 transition-colors">Water, Mineral & Energy
-                Office</h3>
             </div>
-            <!-- 14 -->
-            <div
-              class="p-5 bg-white/90 rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-green/40 transition-all group hover-card-3d reveal-child">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 14: Beke Kelate City -->
+            <div class="absolute top-[10%] left-[75%] rotate-1 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-woreda-green/10 rounded-lg flex items-center justify-center text-woreda-green flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                    </path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-green bg-woreda-green/10 px-2 py-0.5 rounded-full">14</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-500 rounded-full shadow-inner border-t border-red-300">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-10 h-10 bg-woreda-green/10 rounded-lg flex items-center justify-center text-woreda-green">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-xs font-bold text-woreda-green bg-woreda-green/10 px-2 py-0.5 rounded-full">14</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-green transition-colors lang-switchable"
+                  data-am="በኬ ቀላጤ ከተማ" data-om="Magaalaa Beekee Qalaaxee">Beke Kelate City</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-green transition-colors">Beke Kelate City
-                Municipality</h3>
             </div>
-            <!-- 15 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-brown/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 15: Bite Haro City -->
+            <div class="absolute top-[28%] left-[78%] -rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-woreda-brown/10 rounded-lg flex items-center justify-center text-woreda-brown flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                    </path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-brown bg-woreda-brown/10 px-2 py-0.5 rounded-full">15</span>
+                  class="absolute -top-3 left-1/3 w-8 h-4 bg-gray-400/20 backdrop-blur-sm border border-gray-200 rotate-12">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-10 h-10 bg-woreda-brown/10 rounded-lg flex items-center justify-center text-woreda-brown">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-xs font-bold text-woreda-brown bg-woreda-brown/10 px-2 py-0.5 rounded-full">15</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-brown transition-colors lang-switchable"
+                  data-am="ቢቴ ሐሮ ታዳጊ ማዘጋጃ ቤት" data-om="Magaalaa Guddatu Biitee Haroo">ቢቴ ሐሮ ታዳጊ ማዘጋጃ ቤት
+                </h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-brown transition-colors">ቢቴ ሐሮ ታዳጊ ማዘጋጃ ቤት</h3>
-              <p class="text-xs text-gray-500 mt-1">Bite Haro Growth City Municipality</p>
             </div>
-            <!-- 16 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-orange/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 16: Goro Furto City -->
+            <div class="absolute top-[58%] left-[75%] rotate-3 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-woreda-orange flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                    </path>
-                  </svg>
-                </div><span
-                  class="text-xs font-bold text-woreda-orange bg-orange-100 px-2 py-0.5 rounded-full">16</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-blue-600 rounded-full shadow-inner border-t border-blue-400">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-woreda-orange">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-woreda-orange bg-orange-100 px-2 py-0.5 rounded-full">16</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-orange transition-colors lang-switchable"
+                  data-am="ጎሮ ፉርጦ ታዳጊ ማዘጋጃ ቤት" data-om="Magaalaa Guddatu Gooroo Furtoo">ጎሮ ፉርጦ ታዳጊ ማዘጋጃ ቤት
+                </h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-orange transition-colors">ጎሮ ፉርጦ ታዳጊ ማዘጋጃ ቤት
-              </h3>
-              <p class="text-xs text-gray-500 mt-1">Goro Furto Growth City Municipality</p>
             </div>
-            <!-- 17 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-amber-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 17: Attorney -->
+            <div class="absolute top-[88%] left-[62%] -rotate-1 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">17</span>
+                  class="absolute -top-3 left-1/4 w-10 h-4 bg-yellow-400/20 backdrop-blur-sm border border-yellow-200 rotate-6">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">17</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-amber-600 transition-colors lang-switchable"
+                  data-am="የዐቃቤ ህግ ጽ/ቤት" data-om="Waajjira Abbaa Alangaa">Attorney Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">Attorney Office</h3>
             </div>
-            <!-- 18 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-woreda-blue/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 18: Police -->
+            <div class="absolute top-[2%] left-[48%] rotate-2 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-woreda-blue flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-woreda-blue bg-blue-100 px-2 py-0.5 rounded-full">18</span>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full shadow-inner border-t border-red-400">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-woreda-blue">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-woreda-blue bg-blue-100 px-2 py-0.5 rounded-full">18</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-woreda-blue transition-colors lang-switchable"
+                  data-am="የፖሊስ ጽ/ቤት" data-om="Waajjira Poolisii">Police Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-woreda-blue transition-colors">Police Office</h3>
             </div>
-            <!-- 19 -->
-            <div
-              class="p-5 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-rose-500/40 transition-all group">
-              <div class="flex items-center gap-3 mb-2">
+
+            <!-- Card 19: Court -->
+            <div class="absolute top-[18%] left-[2%] -rotate-3 group hover:z-30 transition-all duration-300">
+              <div class="relative p-5 bg-white shadow-xl border border-gray-100 rounded-lg w-64 hover-card-3d">
                 <div
-                  class="w-10 h-10 bg-rose-100 rounded-lg flex items-center justify-center text-rose-600 flex-shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
-                    </path>
-                  </svg>
-                </div><span class="text-xs font-bold text-rose-600 bg-rose-100 px-2 py-0.5 rounded-full">19</span>
+                  class="absolute top-1/2 -left-4 w-10 h-4 bg-rose-400/20 backdrop-blur-sm border border-rose-200 rotate-90">
+                </div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 bg-rose-100 rounded-lg flex items-center justify-center text-rose-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                      </path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold text-rose-600 bg-rose-100 px-2 py-0.5 rounded-full">19</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-rose-600 transition-colors lang-switchable"
+                  data-am="የወረዳው ፍርድ ቤት" data-om="Mana Murtii Aanaa">Court Office</h3>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-rose-600 transition-colors">Court Office</h3>
+            </div>
+
+            <!-- Subtle Visual Connectors (SVG Strings) -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" stroke-dasharray="5,5">
+              <line x1="15%" y1="12%" x2="48%" y2="8%" stroke="#006400" stroke-width="1" />
+              <line x1="53%" y1="10%" x2="72%" y2="48%" stroke="#006400" stroke-width="1" />
+              <line x1="15%" y1="75%" x2="38%" y2="82%" stroke="#8B4513" stroke-width="1" />
+              <line x1="10%" y1="62%" x2="52%" y2="55%" stroke="#1E90FF" stroke-width="1" />
+            </svg>
+          </div>
+
+          <!-- Mobile Fallback (Grid) -->
+          <div class="lg:hidden grid sm:grid-cols-2 gap-4">
+            <!-- Simplified list for mobile readability -->
+            <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center gap-4">
+              <div
+                class="w-8 h-8 bg-woreda-green/10 rounded-lg flex items-center justify-center text-woreda-green text-xs font-bold">
+                01</div>
+              <span class="font-bold text-gray-800 lang-switchable" data-am="የአስተዳደር ጽሕፈት ቤት"
+                data-om="Waajjira Bulchiinsaa">Administration</span>
+            </div>
+            <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center gap-4">
+              <div
+                class="w-8 h-8 bg-woreda-brown/10 rounded-lg flex items-center justify-center text-woreda-brown text-xs font-bold">
+                02</div>
+              <span class="font-bold text-gray-800 lang-switchable" data-am="የምክር ቤት ጽ/ቤት"
+                data-om="Waajjira Mana Maree">የምክር ቤት ጽ/ቤት</span>
+            </div>
+            <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center gap-4">
+              <div
+                class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-700 text-xs font-bold">
+                03</div>
+              <span class="font-bold text-gray-800 lang-switchable" data-am="የግብርና እና የመሬት ጽ/ቤት"
+                data-om="Waajjira Qonnaafi Lafaa">Agriculture & Land</span>
+            </div>
+            <!-- ... others listed simply on mobile ... -->
+            <div class="p-4 bg-gray-50/50 rounded-xl border border-dashed border-gray-200 text-center col-span-full">
+              <span class="text-sm text-gray-500 font-medium">And 16 other dedicated offices...</span>
             </div>
           </div>
         </div>
@@ -856,7 +1033,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-900">Development Progress</h2>
-            <p class="text-lg text-woreda-green font-medium mt-1">የልማት ሂደት</p>
+            <p class="text-lg text-woreda-green font-medium mt-1 lang-switchable" data-am="የልማት ሂደት"
+              data-om="Adeemsa Misoomaa">የልማት ሂደት</p>
             <p class="text-gray-600 max-w-2xl mx-auto mt-4">
               Tracking our path to modernization. Real-time updates on key infrastructure and digital initiatives.
             </p>
@@ -965,232 +1143,31 @@
       </section>
 
       <!-- Administrative Divisions (Kebeles) -->
-      <section id="divisions" class="py-24 bg-white/40 backdrop-blur-md border-t border-gray-100 reveal">
+      <section id="divisions" class="py-24 bg-white/40 backdrop-blur-md border-t border-gray-100 reveal reveal-parent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-16">
             <h2 class="text-3xl font-bold text-gray-900">Administrative Divisions</h2>
-            <p class="text-lg text-woreda-green font-medium mt-1">የአስተዳደር እርከኖች</p>
+            <p class="text-lg text-woreda-green font-medium mt-1 lang-switchable" data-am="የአስተዳደር እርከኖች"
+              data-om="Caasaalee Bulchiinsaa">የአስተዳደር እርከኖች</p>
             <p class="text-gray-600 max-w-2xl mx-auto mt-4">
-              Abuna Ginde Beret Woreda is comprised of 44 Kebeles, providing specialized administration for both urban
-              centers and rural farming communities.
+              Abuna Ginde Beret Woreda is organized into 44 administrative divisions, including **3 Urban Centers** and
+              **41 Rural Kebeles**, all working together for the development of our community.
             </p>
           </div>
 
-          <!-- Urban Kebeles -->
-          <div class="mb-12">
-            <div class="flex items-center gap-4 mb-8">
-              <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gray-200"></div>
-              <h3 class="text-sm font-black uppercase tracking-[0.3em] text-woreda-orange">Urban Centers (3)</h3>
-              <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gray-200"></div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                class="p-4 bg-white/80 rounded-2xl border border-gray-100 shadow-sm hover:border-woreda-orange/30 transition-all hover:-translate-y-1 text-center group">
-                <span class="block text-gray-900 font-bold group-hover:text-woreda-orange transition-colors">Beke
-                  Kelate</span>
-                <span class="text-xs text-woreda-green font-medium">በኬ ቀላጤ</span>
-              </div>
-              <div
-                class="p-4 bg-white/80 rounded-2xl border border-gray-100 shadow-sm hover:border-woreda-orange/30 transition-all hover:-translate-y-1 text-center group">
-                <span class="block text-gray-900 font-bold group-hover:text-woreda-orange transition-colors">Bite
-                  Haro</span>
-                <span class="text-xs text-woreda-green font-medium">ቢቴ ሃሮ</span>
-              </div>
-              <div
-                class="p-4 bg-white/80 rounded-2xl border border-gray-100 shadow-sm hover:border-woreda-orange/30 transition-all hover:-translate-y-1 text-center group">
-                <span class="block text-gray-900 font-bold group-hover:text-woreda-orange transition-colors">Goro
-                  Furto</span>
-                <span class="text-xs text-woreda-green font-medium">ጎሮ ፉርጦ</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Rural Kebeles -->
-          <div>
-            <div class="flex items-center gap-4 mb-8">
-              <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gray-200"></div>
-              <h3 class="text-sm font-black uppercase tracking-[0.3em] text-woreda-green">Rural Kebeles (41)</h3>
-              <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gray-200"></div>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-              <!-- Rural list starts -->
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Erjajo</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Haro</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Gitire Kichu</span>
-                <span class="text-[10px] text-gray-400 font-medium">ጊጥሬ ኪጩ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Danisa Hula Burki</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Obora</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Jemo Fino</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Wolensu</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Yegot</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Gerbi Gole</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Kono</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Gute Andode</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Buketo Kere Dibar</span>
-                <span class="text-[10px] text-gray-400 font-medium">ቡቀቶ ቀሬ ዲባር</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Dire Kegni</span>
-                <span class="text-[10px] text-gray-400 font-medium">ዲሬ ቀኚ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Debeka</span>
-                <span class="text-[10px] text-gray-400 font-medium">ደበቃ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Dogoma Yegot</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Dogoma Kibi</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Gertoke</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Kolu</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Guduru</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Goro Bate</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Goro Dokonu</span>
-                <span class="text-[10px] text-gray-400 font-medium">ጎሮ ዶቆኑ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Dokonu Sure</span>
-                <span class="text-[10px] text-gray-400 font-medium">ዶቆኑ ሱሬ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Goho Guduru</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Wilo Jegenfo</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Doksa Goro Diko</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Gago Bite</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Gago Osole</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Gajo Bedesa</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Insilale Gajo</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Kere Cheka</span>
-                <span class="text-[10px] text-gray-400 font-medium">ቀሬ ጬካ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Kere Bite</span>
-                <span class="text-[10px] text-gray-400 font-medium">ቀሬ ቢቴ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Bedesa Dembi</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Ogobe Gajo</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Mendida Sole</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Mendida Tunjiti</span>
-                <span class="text-[10px] text-gray-400 font-medium">መንዲዳ ጡንጂቲ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Mudema Dega Tina</span>
-                <span class="text-[10px] text-gray-400 font-medium">ሙደማ ደጋ ጥና</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Guto Sombo</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Ereri Kenjo</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Chefe Ereri</span>
-                <span class="text-[10px] text-gray-400 font-medium">ጨፌ ኤሬሪ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Bedesa Chando</span>
-                <span class="text-[10px] text-gray-400 font-medium">በዴሳ ጫንዶ</span>
-              </div>
-              <div
-                class="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100/50 hover:bg-white hover:shadow-md transition-all cursor-default">
-                <span class="block text-sm font-bold text-gray-700">Goro Jalete</span>
-              </div>
-            </div>
+          <!-- Consolidated Directory CTA -->
+          <div class="mt-12 text-center reveal-child">
+            <a href="kebeles.html"
+              class="inline-flex items-center gap-3 px-10 py-5 bg-woreda-green text-white font-black rounded-3xl shadow-xl hover:bg-green-800 hover:shadow-2xl transition-all hover:-translate-y-1 active:scale-95 group">
+              Explore Full Administrative Directory
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <p class="mt-6 text-sm text-gray-400 italic">
+              View the complete directory including Beke Kelate, Bite Haro, Goro Furto and all rural districts.
+            </p>
           </div>
         </div>
       </section>
@@ -1213,7 +1190,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-900">Community Gallery</h2>
-            <p class="text-lg text-woreda-green font-medium mt-1">የማህበረሰብ ምስሎች</p>
+            <p class="text-lg text-woreda-green font-medium mt-1 lang-switchable" data-am="የማህበረሰብ ምስሎች"
+              data-om="Fakkiiwwan Hawaasaa">የማህበረሰብ ምስሎች</p>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -1275,7 +1253,8 @@
             <div class="p-8 md:w-2/3">
               <div class="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full mb-4">
                 Upcoming Event</div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">Annual Harvest Festival</h3>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2 lang-switchable" data-am="ዓመታዊ የመከር በዓል"
+                data-om="Ayyaana Galma Misoomaa Waggaa">Annual Harvest Festival</h3>
               <p class="text-gray-600 mb-6">Join us in Beke Kelate to celebrate the year's harvest featuring local teff,
                 coffee, and honey products. Cultural performances and awards for best farmers.</p>
               <div class="flex items-center text-sm text-gray-500 mb-6">
@@ -1303,7 +1282,8 @@
               </div>
             </div>
             <div class="text-center md:text-left">
-              <h2 class="text-2xl font-bold text-gray-900">Meet the Administrator</h2>
+              <h2 class="text-2xl font-bold text-gray-900 lang-switchable" data-am="ከአስተዳዳሪው ጋር ይተዋወቁ"
+                data-om="Bulchaa Aanaa Waliin Wal Baraa">Meet the Administrator</h2>
               <p class="text-woreda-green font-medium mb-4">Ato [Name Here]</p>
               <p class="text-gray-600 leading-relaxed">
                 Serving Abuna Ginde Beret Woreda since 2023, Ato [Name] has been dedicated to rural development,
@@ -1318,7 +1298,8 @@
       <!-- FAQ -->
       <section class="py-16 bg-gray-50/80 backdrop-blur-sm reveal">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center lang-switchable" data-am="ተደጋግመው የሚጠየቁ ጥያቄዎች"
+            data-om="Gaaffiiwwan Yeroo Baay'ee Gaafataman">Frequently Asked Questions</h2>
           <div class="space-y-4">
             <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:bg-gray-50">
               <h3 class="font-bold text-gray-900 flex justify-between items-center">
@@ -1471,7 +1452,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-white text-black py-20 border-t border-gray-300 relative z-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
           <div class="col-span-1 md:col-span-2">
@@ -1480,16 +1461,17 @@
                 class="w-10 h-10 bg-woreda-green rounded-full flex items-center justify-center text-white font-bold text-xl">
                 A</div>
               <div>
-                <h3 class="text-lg font-bold">Abuna Ginde Beret</h3>
-                <p class="text-xs text-gray-400">Woreda Administration</p>
+                <h3 class="text-xl font-black text-black">Abuna Ginde Beret</h3>
+                <p class="text-xs text-black font-black uppercase tracking-widest">Woreda Administration</p>
               </div>
             </div>
-            <p class="text-gray-400 max-w-sm">Serving the community with transparency and dedication. Committed to the
+            <p class="text-black font-bold max-w-sm mt-4">Serving the community with transparency and dedication.
+              Committed to the
               sustainable development of West Shewa.</p>
           </div>
           <div>
-            <h4 class="text-lg font-bold mb-4">Quick Links</h4>
-            <ul class="space-y-2 text-gray-400">
+            <h4 class="text-lg font-black text-black mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-900 font-bold">
               <li><a href="#home" class="hover:text-woreda-green transition-colors">Home</a></li>
               <li><a href="#about" class="hover:text-woreda-green transition-colors">About Us</a></li>
               <li><a href="#services" class="hover:text-woreda-green transition-colors">Services</a></li>
@@ -1497,11 +1479,11 @@
             </ul>
           </div>
           <div>
-            <h4 class="text-lg font-bold mb-4">Connect</h4>
+            <h4 class="text-lg font-black text-black mb-4">Connect</h4>
             <div class="flex space-x-4">
               <!-- Social placeholders -->
               <a href="#"
-                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-woreda-green transition-colors">
+                class="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-woreda-green transition-all shadow-lg">
                 <span class="sr-only">Facebook</span>
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -1509,7 +1491,7 @@
                 </svg>
               </a>
               <a href="#"
-                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-woreda-green transition-colors">
+                class="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-woreda-green transition-all shadow-lg">
                 <span class="sr-only">Telegram</span>
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -1519,7 +1501,7 @@
             </div>
           </div>
         </div>
-        <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+        <div class="border-t border-gray-300 pt-8 text-center text-black font-black text-sm uppercase tracking-widest">
           &copy; 2026 Abuna Ginde Beret Woreda Administration. All rights reserved.
         </div>
       </div>
