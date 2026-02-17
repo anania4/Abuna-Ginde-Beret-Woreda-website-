@@ -243,7 +243,7 @@
             </a>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- News Card 1 -->
             <article
               class="bg-gray-50/90 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 group hover-card-3d">
@@ -361,7 +361,7 @@
           </div>
 
           <!-- Stats Grid -->
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div id="stats-container" class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <div
               class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-woreda-green text-center hover:-translate-y-1 transition-transform duration-300">
               <div class="text-4xl font-bold text-woreda-green mb-2">150k+</div>
@@ -474,18 +474,18 @@
               d="M14.017 21L14.017 18C14.017 16.0547 15.356 14.2223 17.6004 13.021C18.3294 12.6373 19.3879 12.1868 20.3546 11.536C21.3644 10.8447 22 9.60803 22 8.35852C22 5.92212 20.0779 3.99999 17.6415 3.99999C15.2051 3.99999 13.283 5.92212 13.283 8.35852C13.283 10.7949 11.3609 12.7171 8.92449 12.7171C6.48809 12.7171 4.56598 10.7949 4.56598 8.35852C4.56598 4.70014 6.78451 1.63751 9.94827 0.404221C10.6052 0.147232 10.3797 -0.666667 9.77536 -0.666667C3.96131 -0.666667 -0.748604 4.56784 0.0540707 9.87637C0.493976 12.7843 2.66444 14.8878 5.48512 15.6963C8.7562 16.6343 11.5714 14.881 12.5414 12.7171C13.5113 10.5532 20.3546 11.536 20.3546 11.536C20.3546 11.536 19.3333 13.5935 15.7533 17.021C14.6542 18.0772 14.017 19.5298 14.017 21Z">
             </path>
           </svg>
-          <blockquote class="text-2xl md:text-3xl font-light italic leading-relaxed mb-8">
+          <blockquote id="admin-message" class="text-2xl md:text-3xl font-light italic leading-relaxed mb-8">
             "Our strength lies in our unity and our connection to the land. Together, we are building a future where
             every child has access to education, every farmer thrives, and our community health is secured."
           </blockquote>
           <div class="flex items-center justify-center">
-            <div
+            <div id="admin-avatar-container"
               class="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center text-woreda-green font-bold text-xl mr-4">
               A
             </div>
             <div class="text-left">
-              <div class="font-bold text-lg">Ato [Administrator Name]</div>
-              <div class="text-green-100 text-sm">Head Administrator, Abuna Ginde Beret Woreda</div>
+              <div id="admin-name" class="font-bold text-lg">Ato [Administrator Name]</div>
+              <div id="admin-role" class="text-green-100 text-sm">Head Administrator, Abuna Ginde Beret Woreda</div>
             </div>
           </div>
         </div>
@@ -569,7 +569,8 @@
           </div>
 
           <!-- Murder Board Container -->
-          <div class="relative min-h-[1200px] md:min-h-[1000px] lg:min-h-[900px] murder-board-grid lg:block hidden">
+          <div id="sectors-desktop-container"
+            class="relative min-h-[1200px] md:min-h-[1000px] lg:min-h-[900px] murder-board-grid lg:block hidden">
             <!-- Pinned Cards (Scattered) -->
 
             <!-- Card 1: Administration -->
@@ -991,7 +992,7 @@
           </div>
 
           <!-- Mobile Fallback (Grid) -->
-          <div class="lg:hidden grid sm:grid-cols-2 gap-4">
+          <div id="sectors-mobile-container" class="lg:hidden grid sm:grid-cols-2 gap-4">
             <!-- Simplified list for mobile readability -->
             <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center gap-4">
               <div
@@ -1065,7 +1066,7 @@
           </div>
 
           <!-- Projects Grid -->
-          <div class="grid md:grid-cols-2 gap-10">
+          <div id="projects-container" class="grid md:grid-cols-2 gap-10">
             <!-- Project 1 -->
             <div
               class="group relative bg-white/80 backdrop-blur-sm rounded-3xl border border-gray-100 p-1 hover:border-woreda-green/30 transition-all hover-card-3d overflow-hidden shadow-lg shadow-gray-200/50">
@@ -1194,48 +1195,10 @@
               data-om="Fakkiiwwan Hawaasaa">የማህበረሰብ ምስሎች</p>
           </div>
 
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
-              <div class="absolute inset-0 bg-gray-400 flex items-center justify-center text-white font-medium">Farming
-                Scene</div>
-              <div
-                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
-                View</div>
-            </div>
-            <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
-              <div class="absolute inset-0 bg-gray-300 flex items-center justify-center text-gray-600 font-medium">
-                Market Day</div>
-              <div
-                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
-                View</div>
-            </div>
-            <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
-              <div class="absolute inset-0 bg-gray-400 flex items-center justify-center text-white font-medium">
-                Beekeeping</div>
-              <div
-                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
-                View</div>
-            </div>
-            <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
-              <div class="absolute inset-0 bg-gray-300 flex items-center justify-center text-gray-600 font-medium">
-                School Event</div>
-              <div
-                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
-                View</div>
-            </div>
-            <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
-              <div class="absolute inset-0 bg-gray-400 flex items-center justify-center text-white font-medium">
-                Landscape</div>
-              <div
-                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
-                View</div>
-            </div>
-            <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
-              <div class="absolute inset-0 bg-gray-300 flex items-center justify-center text-gray-600 font-medium">
-                Cultural Dance</div>
-              <div
-                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
-                View</div>
+          <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Gallery items will be loaded dynamically from Strapi -->
+            <div class="col-span-full flex justify-center py-10">
+              <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-woreda-green"></div>
             </div>
           </div>
         </div>
@@ -1244,30 +1207,10 @@
       <!-- Community Events -->
       <section class="py-16 bg-gray-50/80 backdrop-blur-sm border-t border-gray-200 reveal">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row">
-            <div class="md:w-1/3 bg-woreda-orange text-white p-8 flex flex-col items-center justify-center text-center">
-              <div class="text-5xl font-bold mb-2">15</div>
-              <div class="text-xl uppercase tracking-wider mb-4">November</div>
-              <div class="text-sm opacity-80">2026</div>
-            </div>
-            <div class="p-8 md:w-2/3">
-              <div class="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full mb-4">
-                Upcoming Event</div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-2 lang-switchable" data-am="ዓመታዊ የመከር በዓል"
-                data-om="Ayyaana Galma Misoomaa Waggaa">Annual Harvest Festival</h3>
-              <p class="text-gray-600 mb-6">Join us in Beke Kelate to celebrate the year's harvest featuring local teff,
-                coffee, and honey products. Cultural performances and awards for best farmers.</p>
-              <div class="flex items-center text-sm text-gray-500 mb-6">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                Beke Kelate Main Square
-              </div>
-              <button class="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-black transition-colors">Event
-                Details</button>
+          <div id="event-card" class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row">
+            <!-- Event content will be loaded dynamically from Strapi -->
+            <div class="col-span-full flex justify-center py-10">
+              <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-woreda-green"></div>
             </div>
           </div>
         </div>
@@ -1300,7 +1243,7 @@
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center lang-switchable" data-am="ተደጋግመው የሚጠየቁ ጥያቄዎች"
             data-om="Gaaffiiwwan Yeroo Baay'ee Gaafataman">Frequently Asked Questions</h2>
-          <div class="space-y-4">
+          <div id="faq-container" class="space-y-4">
             <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:bg-gray-50">
               <h3 class="font-bold text-gray-900 flex justify-between items-center">
                 Where can I get my Resident ID?
@@ -1465,7 +1408,8 @@
                 <p class="text-xs text-black font-black uppercase tracking-widest">Woreda Administration</p>
               </div>
             </div>
-            <p class="text-black font-bold max-w-sm mt-4">Serving the community with transparency and dedication.
+            <p id="footer-text" class="text-black font-bold max-w-sm mt-4">Serving the community with transparency and
+              dedication.
               Committed to the
               sustainable development of West Shewa.</p>
           </div>

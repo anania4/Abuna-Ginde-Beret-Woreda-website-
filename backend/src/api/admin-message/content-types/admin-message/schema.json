@@ -1,0 +1,57 @@
+{
+    "kind": "singleType",
+    "collectionName": "admin_messages",
+    "info": {
+        "singularName": "admin-message",
+        "pluralName": "admin-messages",
+        "displayName": "Admin Message",
+        "description": "Welcome message from the Woreda Administrator"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "administratorName": {
+            "type": "string",
+            "required": true
+        },
+        "role": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "message": {
+            "type": "richtext",
+            "required": true,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "image": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images"
+            ]
+        }
+    }
+}
