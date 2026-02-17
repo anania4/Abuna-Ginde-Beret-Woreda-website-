@@ -156,6 +156,40 @@ Run through this checklist:
 
 ---
 
+## 🚀 Production Deployment
+
+Ready to deploy? The application now serves the frontend from the backend through a single server!
+
+### Quick Production Setup
+
+1. **Build the frontend:**
+   ```bash
+   npm run build
+   ```
+
+2. **Start backend in production mode:**
+   ```bash
+   cd backend
+   NODE_ENV=production npm run start
+   ```
+
+3. **Access everything from one URL:**
+   - Frontend: http://your-domain.com/
+   - Admin: http://your-domain.com/admin
+   - API: http://your-domain.com/api/*
+
+### Full Deployment Guide
+
+See **[DEPLOYMENT-GUIDE.md](./DEPLOYMENT-GUIDE.md)** for:
+- Complete production setup instructions
+- Environment configuration
+- Cache optimization verification
+- Multiple deployment options (VPS, Docker, PaaS)
+- Security checklist
+- Troubleshooting guide
+
+---
+
 ## 🎉 Success!
 
 Once everything is working:
