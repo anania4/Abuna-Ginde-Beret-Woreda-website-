@@ -1,4 +1,10 @@
 import type { Core } from '@strapi/strapi';
+import path from 'path';
+import fs from 'fs';
+
+// Serve frontend from backend/public directory
+const projectRoot = path.resolve(__dirname, '../../..');
+const frontendRoot = path.join(projectRoot, 'backend/public');
 
 const config: Core.Config.Middlewares = [
   'strapi::logger',
@@ -18,6 +24,16 @@ const config: Core.Config.Middlewares = [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
+  {
+    name: 'global::static-frontend',
+    config: {
+      rootDir: frontendRoot,  // Serve from dist/ if it exists, otherwise project root
+      indexFile: 'index.html',
+      cacheControl: process.env.NODE_ENV === 'production' 
+        ? 'public, max-age=31536000' 
+        : 'no-cache'
+    }
+  }
 ];
 
 export default config;

@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "npm run build && cp -r dist/* backend/public/ && cd backend && npm run start",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "vite",
+    "build:frontend": "vite build",
+    "deploy:frontend": "npm run build && cp -r dist/* backend/public/"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.24",
