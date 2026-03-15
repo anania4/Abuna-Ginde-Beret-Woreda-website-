@@ -287,221 +287,306 @@ export default function Home({ lang }: HomeProps) {
         </div>
       </motion.section>
 
-      {/* About & Stats MOVED DIRECTLY BELOW HERO */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-white relative overflow-hidden stats-section">
+      {/* 2. Standardized About & Stats (Administrator Message) */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, margin: "-100px" }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        className="py-24 bg-white relative overflow-hidden stats-section"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-8">{t.aboutTitle}</h2>
-              <p className="text-xl text-slate-600 leading-relaxed mb-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-100">
+                <Users className="w-3 h-3 text-emerald-500" />
+                Community Insight
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tighter leading-tight">
+                {t.aboutTitle}
+              </h2>
+              <p className="text-lg text-slate-500 font-light leading-relaxed mb-10 max-w-xl border-l-4 border-emerald-500/20 pl-6">
                 {t.aboutSubtitle} Abuna Ginde Beret is a land of diverse landscapes, rich cultural heritage, and hardworking people committed to sustainable growth.
               </p>
-              <div className="grid grid-cols-2 gap-8">
+              
+              <div className="grid grid-cols-2 gap-6">
                 {[
-                  { label: t.statsResidents, value: (globalSettings as any)?.resident_count?.toLocaleString() || "150,000+", icon: Users, color: "text-blue-600", bg: "bg-blue-50" },
-                  { label: "Kebeles", value: (globalSettings as any)?.kebele_count || "44", icon: MapPin, color: "text-emerald-600", bg: "bg-emerald-50" },
-                  { label: t.statsAgriculture, value: (globalSettings as any)?.agriculture_percentage || "95%", icon: Tractor, color: "text-amber-600", bg: "bg-amber-50" },
-                  { label: "Total Schools", value: (globalSettings as any)?.school_count || "44", icon: School, color: "text-red-600", bg: "bg-red-50" },
+                  { label: t.statsResidents, value: (globalSettings as any)?.resident_count?.toLocaleString() || "150,000+", icon: Users, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
+                  { label: "Kebeles", value: (globalSettings as any)?.kebele_count || "44", icon: MapPin, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
+                  { label: "Agriculture", value: (globalSettings as any)?.agriculture_percentage || "95%", icon: Tractor, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
+                  { label: "Education", value: (globalSettings as any)?.school_count || "44", icon: School, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
                 ].map((stat, i) => (
-                  <div key={i} className="stat-item flex items-center gap-4 p-4 rounded-2xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1">
-                    <div className={`p-4 rounded-xl ${stat.bg} shadow-sm ${stat.color}`}>
-                      <stat.icon className="w-7 h-7" />
+                  <div key={i} className="group stat-item flex items-center gap-4 p-5 rounded-[2rem] border border-slate-50 bg-slate-50/30 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-500">
+                    <div className={`p-3 rounded-xl ${stat.bg} shadow-sm ${stat.color} ${stat.accent} transition-colors`}>
+                      <stat.icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-3xl font-black text-slate-900">{stat.value}</div>
-                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</div>
+                      <div className="text-2xl font-black text-slate-900 tracking-tight">{stat.value}</div>
+                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+
             <div className="relative">
               <motion.div
-                className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-slate-50"
-                whileHover={{ scale: 1.02, rotate: 1 }}
-                transition={{ duration: 0.3 }}
+                className="aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl border-[12px] border-slate-50 relative group bg-slate-50"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.5 }}
               >
-                <img src="https://picsum.photos/seed/abuna-about/1000/1000" alt="About" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <img 
+                  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Abuna Ginde Beret Landscape" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                  referrerPolicy="no-referrer" 
+                />
+                
+                {/* Visual Accent */}
+                <div className="absolute top-8 right-8 w-12 h-12 rounded-full border border-emerald-500/30 flex items-center justify-center backdrop-blur-sm">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                </div>
               </motion.div>
+              
               <motion.div
-                className="absolute -bottom-10 -right-10 bg-gradient-to-br from-emerald-600 to-emerald-700 p-10 rounded-[2.5rem] shadow-2xl text-white max-w-[280px]"
-                initial={{ opacity: 0, x: 50, y: 50 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                viewport={{ once: true }}
+                className="absolute -bottom-8 -right-8 glass p-10 rounded-[3rem] shadow-2xl max-w-[320px] gov-shadow border border-white/40"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
               >
-                <Quote className="w-10 h-10 mb-4 opacity-50" />
-                <p className="text-lg font-medium italic leading-relaxed">"Building a resilient community through agriculture and education."</p>
+                <div className="flex items-start gap-4">
+                  <Quote className="w-8 h-8 text-blue-500 opacity-20 flex-shrink-0" />
+                  <p className="text-base font-medium text-slate-800 italic leading-relaxed">
+                    "A vibrant community where heritage meets progress, fostering sustainable growth for every citizen."
+                  </p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                  <div>
+                    <div className="font-black text-slate-900 text-sm uppercase tracking-tight">Abuna Ginde Beret</div>
+                    <div className="text-[10px] font-black text-blue-600 uppercase tracking-widest mt-1">Regional Excellence</div>
+                  </div>
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* 3. Murder Board Sectors */}
-      <motion.section id="sectors" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-slate-900 text-white overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]"></div>
+      {/* 3. HIGH-PREMIUM Institutional Sectors */}
+      <motion.section 
+        id="sectors" 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        viewport={{ once: true }} 
+        transition={{ duration: 1 }} 
+        className="py-32 bg-slate-950 overflow-hidden relative"
+      >
+        {/* Abstract Background Texture */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.15),transparent_70%)]" />
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">{t.sectorsTitle}</h2>
-            <p className="text-xl text-white/60 max-w-2xl mx-auto">{t.sectorsSubtitle}</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-12">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-2xl shadow-blue-500/20">
+                <Layout className="w-3.5 h-3.5 text-emerald-400" />
+                Institutional Framework
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-[0.9] drop-shadow-2xl">
+                {t.sectorsTitle}
+              </h2>
+              <p className="text-xl text-slate-400 font-light leading-relaxed max-w-2xl drop-shadow-lg border-l-2 border-emerald-500/30 pl-8">
+                The administrative pillars driving socio-economic transformation across Abuna Ginde Beret.
+              </p>
+            </div>
+            <Link 
+              to="/sectors" 
+              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white/5 backdrop-blur-xl border border-white/10 text-white font-black rounded-full hover:bg-white hover:text-slate-950 transition-all duration-500 uppercase tracking-widest text-xs overflow-hidden"
+            >
+              <span className="relative z-10">Explore All Bureaus</span>
+              <ChevronRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-0" />
+            </Link>
           </div>
 
-          <div className="relative min-h-[800px] hidden lg:block">
-            {/* Scattered Cards Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sectors.length > 0 ? sectors.map((sector, i) => {
-              const Icon = i % 4 === 0 ? Tractor : i % 4 === 1 ? School : i % 4 === 2 ? HeartPulse : Building2;
-              const positions = [
-                "top-[5%] left-[10%]", "top-[15%] left-[40%]", "top-[10%] left-[70%]",
-                "top-[40%] left-[15%]", "top-[45%] left-[45%]", "top-[35%] left-[75%]",
-                "top-[70%] left-[25%]", "top-[75%] left-[55%]", "top-[65%] left-[80%]"
-              ];
-              const rots = ["rotate-2", "-rotate-3", "rotate-1", "-rotate-2", "rotate-3", "-rotate-1", "rotate-2", "-rotate-2", "rotate-3"];
-              const colors = ["bg-emerald-500", "bg-blue-500", "bg-amber-500", "bg-purple-500", "bg-red-500", "bg-slate-500", "bg-orange-500", "bg-indigo-500", "bg-cyan-500"];
+              const sectorName = sector.name_en?.toLowerCase() || "";
+              const localIconMap: Record<string, any> = {
+                agriculture: Tractor, education: School, health: HeartPulse,
+                administration: Building2, finance: DollarSign, security: ShieldCheck,
+                water: Droplets, justice: Gavel, trade: Briefcase,
+              };
+              const iconKey = sector.icon_name?.toLowerCase() || sectorName.split(' ')[0];
+              const Icon = localIconMap[iconKey] || Building2;
 
               return (
                 <motion.div
                   key={sector.id}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.1, zIndex: 50 }}
-                  className={`absolute ${positions[i % positions.length]} ${rots[i % rots.length]} p-6 bg-white rounded-2xl shadow-2xl border border-white/20 group cursor-pointer`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08, duration: 0.6 }}
+                  className="group perspective"
                 >
-                  <Link to={`/sectors/${sector.id}`}>
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${colors[i % colors.length]} text-white shadow-lg`}>
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-slate-900 font-bold text-lg whitespace-nowrap">{getLocalized(sector, 'name', lang)}</h3>
-                    <div className="flex items-center gap-2 mt-2 text-slate-400 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                      Details <ArrowRight className="w-3 h-3" />
+                  <Link 
+                    to={`/sectors/${sector.id}`}
+                    className="flex flex-col h-full p-12 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[3rem] hover:bg-white/[0.07] hover:border-blue-500/30 transition-all duration-700 relative overflow-hidden group-hover:-translate-y-2 group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] shadow-2xl"
+                  >
+                    {/* Glowing Accent */}
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 blur-[80px] group-hover:bg-emerald-500/20 transition-all duration-700" />
+                    
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:border-transparent transition-all duration-500 mb-10 shadow-2xl">
+                        <Icon className="w-8 h-8 group-hover:text-emerald-300 transition-colors" />
+                      </div>
+                      
+                      <h3 className="text-2xl font-black text-white mb-4 tracking-tighter leading-tight group-hover:text-blue-400 transition-colors">
+                        {getLocalized(sector, 'name', lang)}
+                      </h3>
+                      
+                      <p className="text-slate-400 font-light text-sm leading-relaxed mb-12 line-clamp-2 italic opacity-80 group-hover:opacity-100 transition-opacity">
+                        Official mandate of the {getLocalized(sector, 'name', lang)} Bureau.
+                      </p>
+
+                      <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 group-hover:text-emerald-400 transition-colors">Digital Governance</span>
+                        <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 transition-colors">
+                          <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
+                        </div>
+                      </div>
                     </div>
                   </Link>
                 </motion.div>
               );
             }) : (
-              <div className="absolute inset-0 flex items-center justify-center text-white/20 text-4xl font-black">
-                WOREDA SECTORS
-              </div>
+              [1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="h-80 bg-white/5 rounded-[3rem] animate-pulse" />
+              ))
             )}
-
-            {/* Visual Connectors (SVG Strings) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" strokeDasharray="5,5">
-              <line x1="15%" y1="12%" x2="42%" y2="18%" stroke="white" strokeWidth="1" />
-              <line x1="45%" y1="20%" x2="72%" y2="15%" stroke="white" strokeWidth="1" />
-              <line x1="20%" y1="45%" x2="45%" y2="50%" stroke="white" strokeWidth="1" />
-              <line x1="50%" y1="50%" x2="75%" y2="40%" stroke="white" strokeWidth="1" />
-            </svg>
-          </div>
-
-          {/* Mobile Grid Fallback */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
-            {sectors.map((sector, i) => (
-              <Link to={`/sectors/${sector.id}`} key={i} className="p-6 bg-white/10 backdrop-blur rounded-2xl border border-white/10">
-                <div className="font-bold">{getLocalized(sector, 'name', lang)}</div>
-              </Link>
-            ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Latest Updates */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-slate-50">
+      {/* 4. Standardized Latest Updates */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, margin: "-100px" }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        className="py-24 bg-slate-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">{t.latestNews}</h2>
-              <div className="w-20 h-1.5 bg-woreda-green rounded-full"></div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+                <Newspaper className="w-3.5 h-3.5" />
+                News Bureau
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">{t.latestNews}</h2>
+              <p className="text-lg text-slate-500 font-light leading-relaxed">Stay informed with the latest governmental updates and regional news.</p>
             </div>
-            <Link to="/news" className="hidden md:flex items-center gap-2 text-sm font-bold text-woreda-green hover:underline uppercase tracking-widest">
-              {t.viewAll} <ChevronRight className="w-4 h-4" />
+            <Link 
+              to="/news" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 font-black rounded-2xl hover:bg-slate-900 hover:text-white shadow-sm transition-all group uppercase tracking-widest text-[10px]"
+            >
+              {t.viewAll} <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-8">
             {newsLoading ? (
-              // Loading state
               [1, 2, 3].map((i) => (
-                <div key={i} className="bg-slate-50 rounded-3xl overflow-hidden shadow-sm border border-slate-100 animate-pulse">
-                  <div className="h-64 bg-slate-200"></div>
-                  <div className="p-8">
-                    <div className="h-4 bg-slate-200 rounded w-1/3 mb-4"></div>
-                    <div className="h-6 bg-slate-200 rounded w-full mb-2"></div>
-                    <div className="h-6 bg-slate-200 rounded w-2/3"></div>
-                  </div>
-                </div>
+                <div key={i} className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 animate-pulse h-[450px]" />
               ))
             ) : news.length > 0 ? (
-              // Display news from API
               news.map((newsItem, i) => (
                 <motion.div
                   key={newsItem.id}
-                  whileHover={{ y: -10 }}
-                  className="bg-slate-50 rounded-3xl overflow-hidden shadow-sm border border-slate-100 group cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group"
                 >
-                  <Link to={`/news/${newsItem.id}`}>
+                  <Link to={`/news/${newsItem.id}`} className="flex flex-col h-full bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500">
                     <div className="h-64 overflow-hidden relative">
                       <img
                         src={getImageUrl(newsItem.img)}
                         alt={getLocalized(newsItem, 'title', lang)}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         referrerPolicy="no-referrer"
                       />
-                      {newsItem.category && (
-                        <div className="absolute top-6 left-6 px-3 py-1 bg-white/90 backdrop-blur text-[10px] font-black uppercase tracking-[0.2em] rounded shadow-sm">
-                          {newsItem.category}
-                        </div>
-                      )}
+                      <div className="absolute top-6 left-6 px-4 py-1.5 bg-white/90 backdrop-blur rounded-lg text-[9px] font-black uppercase tracking-[0.2em] shadow-xl">
+                        {newsItem.category || "Official"}
+                      </div>
                     </div>
-                    <div className="p-8">
-                      <div className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-4">
+                    <div className="p-10 flex flex-col flex-grow">
+                      <div className="text-[10px] text-emerald-600 font-black uppercase tracking-[0.2em] mb-4">
                         {new Date(newsItem.date || newsItem.created_at).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric'
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric'
                         })}
                       </div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-6 line-clamp-2 group-hover:text-woreda-green transition-colors leading-tight">
+                      <h3 className="text-xl font-black text-slate-900 mb-6 line-clamp-2 leading-tight group-hover:text-emerald-600 transition-colors">
                         {getLocalized(newsItem, 'title', lang)}
                       </h3>
-                      <div className="flex items-center text-sm font-black text-woreda-green uppercase tracking-widest">
-                        Read More <ChevronRight className="w-4 h-4 ml-2" />
+                      <div className="mt-auto flex items-center justify-between pt-6 border-t border-slate-50">
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-emerald-600 transition-colors">Read Full Release</span>
+                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
                       </div>
                     </div>
                   </Link>
                 </motion.div>
               ))
             ) : (
-              // No news available
-              <div className="col-span-3 text-center py-12 text-slate-400">
-                <p>No news available at the moment. Check back soon!</p>
+              <div className="col-span-3 text-center py-20 bg-white rounded-[3rem] border border-dashed border-slate-200 text-slate-400 font-light">
+                No active news bulletins at this time.
               </div>
             )}
           </div>
         </div>
       </motion.section>
 
-      {/* Woreda Gallery Preview */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-white">
+      {/* 5. Standardized Woreda Gallery Preview */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, margin: "-100px" }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        className="py-24 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">{t.galleryTitle}</h2>
-              <div className="w-20 h-1.5 bg-emerald-500 rounded-full"></div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 text-sky-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-50">
+                <Layout className="w-3.5 h-3.5 text-emerald-500" />
+                Visual Archive
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Community <span className="border-b-4 border-emerald-500/20">Gallery</span></h2>
+              <p className="text-lg text-slate-500 font-light leading-relaxed">A window into the vibrant landscapes and cultural life of our community.</p>
             </div>
-            <Link to="/gallery" className="hidden md:flex items-center gap-2 text-sm font-bold text-emerald-600 hover:underline uppercase tracking-widest">
-              {t.viewAll} <ChevronRight className="w-4 h-4" />
+            <Link 
+              to="/gallery" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-slate-50 text-slate-900 font-black rounded-2xl hover:bg-slate-900 hover:text-white transition-all group uppercase tracking-widest text-[10px] border border-transparent hover:border-emerald-500/30"
+            >
+              Explore Gallery <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-emerald-400" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
             {galleries.length > 0 ? galleries.map((item, i) => (
               <motion.div
                 key={item.id}
-                whileHover={{ scale: 1.02 }}
-                className="aspect-square relative rounded-3xl overflow-hidden group shadow-lg"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05 }}
+                className="group relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 border border-slate-100 hover:border-emerald-500/20"
               >
                 <img
                   src={getImageUrl(item.img)}
@@ -509,90 +594,117 @@ export default function Home({ lang }: HomeProps) {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
-                  <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">{item.category}</span>
-                  <p className="text-white font-bold text-sm line-clamp-1">{getLocalized(item, 'title', lang)}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-10">
+                  <span className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em] mb-2">{item.category || "Media"}</span>
+                  <p className="text-white font-black text-xl tracking-tight leading-tight group-hover:text-sky-300 transition-colors">{getLocalized(item, 'title', lang)}</p>
                 </div>
               </motion.div>
             )) : (
               [1, 2, 3, 4, 5, 6].map(i => (
-                <div key={i} className="aspect-square bg-slate-100 rounded-3xl animate-pulse"></div>
+                <div key={i} className="aspect-[4/3] bg-slate-100 rounded-[2.5rem] animate-pulse" />
               ))
             )}
           </div>
         </div>
       </motion.section>
 
-      {/* Development Progress */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-slate-50">
+      {/* 6. Standardized Development Progress */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, margin: "-100px" }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        className="py-24 bg-slate-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Development Progress</h2>
-            <p className="text-lg text-slate-500">Tracking our path to modernization and digital growth.</p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-100">
+              <Briefcase className="w-3.5 h-3.5 text-emerald-500" />
+              Strategic Growth
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Development <span className="text-blue-600">Progress</span></h2>
+            <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto">Real-time status of key infrastructure and modernization projects across the region.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8">
             {projects.length > 0 ? projects.map((project, i) => (
-              <div key={project.id} className="p-10 bg-white rounded-[3rem] border border-slate-100 group shadow-sm transition-all hover:shadow-xl">
-                <div className="flex justify-between items-start mb-8">
+              <motion.div 
+                key={project.id}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="p-12 bg-white rounded-[3rem] border border-slate-100 group shadow-sm hover:shadow-2xl transition-all duration-500 relative"
+              >
+                {/* Subtle Emerald Corner Accent */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/5 group-hover:bg-emerald-500/10 rounded-bl-[2rem] transition-colors" />
+
+                <div className="flex justify-between items-start mb-10">
                   <div>
-                    <span className="px-3 py-1 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest rounded-md">
+                    <span className="px-4 py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase tracking-[0.2em] rounded-lg">
                       {project.status || 'Planned'}
                     </span>
-                    <h3 className="text-2xl font-bold text-slate-900 mt-4">{getLocalized(project, 'title', lang)}</h3>
+                    <h3 className="text-2xl font-black text-slate-900 mt-6 tracking-tight group-hover:text-blue-600 transition-colors uppercase leading-[0.9]">{getLocalized(project, 'title', lang)}</h3>
                     {project.milestone && (
-                      <div className="text-sm font-bold text-emerald-600 mt-2 uppercase tracking-tight">
-                        Milestone: {getLocalized(project, 'milestone', lang)}
+                      <div className="text-[10px] font-black text-blue-600 mt-4 uppercase tracking-[0.1em] flex items-center gap-2">
+                        <div className="w-2 h-[1px] bg-emerald-500" />
+                        Current: {getLocalized(project, 'milestone', lang)}
                       </div>
                     )}
                   </div>
-                  <div className="text-4xl font-black text-slate-200 group-hover:text-woreda-green transition-colors">{project.percent || 0}%</div>
+                  <div className="text-5xl font-black text-slate-100 group-hover:text-blue-600/20 transition-colors tracking-tighter relative">
+                    {project.percent || 0}%
+                    <div className="absolute -top-2 -right-2 w-2 h-2 rounded-full bg-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                 </div>
                 
-                <div className="flex items-center gap-4 mb-6 text-sm text-slate-400 font-bold">
+                <div className="flex items-center gap-6 mb-10 text-[10px] text-slate-400 font-black uppercase tracking-widest border-y border-slate-50 py-4">
                   {project.start_date && (
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-3.5 h-3.5" />
                       {new Date(project.start_date).toLocaleDateString()}
                     </div>
                   )}
                   {project.end_date && (
-                    <div className="flex items-center gap-1">
-                      <span>→</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-blue-500 font-black">Target</span>
                       {new Date(project.end_date).toLocaleDateString()}
                     </div>
                   )}
                 </div>
 
                 <div
-                  className="text-slate-500 mb-10 leading-relaxed line-clamp-2"
+                  className="text-sm text-slate-500 mb-10 leading-relaxed line-clamp-2 font-light italic border-l-2 border-emerald-500/20 pl-4"
                   dangerouslySetInnerHTML={{ __html: getLocalized(project, 'description', lang) }}
                 />
                 
                 <div className="relative mb-4">
-                  <div className="flex justify-between text-xs font-black uppercase tracking-widest mb-2 text-slate-400">
-                    <span>Progress</span>
-                    <span className="text-woreda-green">{project.percent || 0}%</span>
+                  <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.2em] mb-4 text-slate-400">
+                    <span>Task Completion</span>
+                    <span className="text-blue-600">{project.percent || 0}%</span>
                   </div>
-                  <div className="w-full bg-slate-100 h-4 rounded-full overflow-hidden relative">
+                  <div className="w-full bg-slate-50 h-3 rounded-full overflow-hidden relative shadow-inner">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${project.percent || 0}%` }}
-                      className={`h-full ${project.percent > 0 ? 'bg-woreda-green' : 'bg-slate-300'}`}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className={`h-full ${project.percent > 0 ? 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-lg' : 'bg-slate-300'}`}
                     />
+                    {/* Progress Cursor Accent */}
+                    <div className="absolute top-0 right-0 h-full w-[2px] bg-emerald-400" />
                   </div>
                 </div>
 
                 <button 
                   onClick={() => setSelectedProject(project)}
-                  className="w-full mt-10 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-all flex items-center justify-center gap-2"
+                  className="w-full mt-10 p-5 bg-slate-900 text-white font-black rounded-2xl hover:bg-blue-600 transition-all flex items-center justify-center gap-3 uppercase tracking-widest text-[10px] shadow-xl group/btn overflow-hidden relative"
                 >
-                  View Project Details <ExternalLink className="w-4 h-4" />
+                  <span className="relative z-10">Project Dashboard</span>
+                  <ExternalLink className="w-4 h-4 relative z-10" />
+                  <div className="absolute inset-0 bg-emerald-500 opacity-0 group-hover/btn:opacity-10 transition-opacity" />
                 </button>
-              </div>
+              </motion.div>
             )) : (
-              <div className="col-span-2 text-center py-12 text-slate-400">
-                <p>No active development projects listed at this time.</p>
+              <div className="col-span-2 text-center py-20 bg-white rounded-[3rem] border border-dashed border-slate-200 text-slate-400">
+                <p>Strategic project portfolio mapping in progress.</p>
               </div>
             )}
           </div>
@@ -600,132 +712,181 @@ export default function Home({ lang }: HomeProps) {
       </motion.section>
 
       {/* Administrator Message */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-woreda-green text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h2 className="text-sm font-bold uppercase tracking-[0.4em] mb-12 opacity-70">{t.adminMessageTitle}</h2>
-          <blockquote className="text-3xl md:text-5xl font-medium italic leading-tight mb-16">
-            <div dangerouslySetInnerHTML={{ __html: getLocalized(adminMessage, 'message', lang) || (t as any).adminMessageDesc }} />
-          </blockquote>
-          <div className="flex flex-col items-center">
-            <div className="w-24 h-24 bg-emerald-800 rounded-full flex items-center justify-center text-white font-bold text-3xl mb-6 border-4 border-emerald-700 shadow-2xl overflow-hidden">
-              {adminMessage?.img ? (
-                <img src={getImageUrl(adminMessage.img)} alt={getLocalized(adminMessage, 'administrator_name', lang)} className="w-full h-full object-cover" />
-              ) : (
-                adminMessage?.administrator_name?.[0] || "A"
-              )}
+      <section className="py-32 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,#0ea5e9,transparent)]"></div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block px-6 py-2 rounded-full bg-blue-500/10 border border-emerald-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+              Executive Message
             </div>
-            <div className="text-2xl font-bold mb-1">{getLocalized(adminMessage, 'administrator_name', lang) || t.adminName}</div>
-            <div className="text-lg opacity-70">{getLocalized(adminMessage, 'role', lang) || t.adminRole}</div>
+          </div>
+          
+          <div className="relative">
+            <span className="absolute -top-12 -left-8 text-9xl text-blue-500/10 font-serif leading-none italic select-none">“</span>
+            <div 
+              className="text-3xl md:text-5xl font-light text-white italic leading-tight text-center relative z-10 border-x-2 border-emerald-500/10 px-12"
+              dangerouslySetInnerHTML={{ __html: getLocalized(adminMessage, 'message', lang) || (t as any).adminMessageDesc }}
+            />
+            <span className="absolute -bottom-12 -right-8 text-9xl text-blue-500/10 font-serif leading-none italic select-none">”</span>
+          </div>
+
+          <div className="mt-20 flex flex-col items-center">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-blue-500 blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="w-64 h-64 md:w-72 md:h-72 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold text-5xl mb-16 border-4 border-blue-600 shadow-3xl overflow-hidden relative z-10">
+                {adminMessage?.image ? (
+                  <img src={getImageUrl(adminMessage.image)} alt={getLocalized(adminMessage, 'administrator_name', lang)} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full bg-blue-600 flex items-center justify-center text-white">
+                    {adminMessage?.administrator_name?.[0] || "A"}
+                  </div>
+                )}
+                {/* Emerald Hint on Photo Frame */}
+                <div className="absolute bottom-4 right-4 w-16 h-16 bg-emerald-500 rounded-full border-[10px] border-slate-800 flex items-center justify-center shadow-2xl">
+                  <div className="w-4 h-4 bg-white rounded-full" />
+                </div>
+              </div>
+            </div>
+            <div className="text-center">
+              <h4 className="text-2xl font-black text-white mb-2 tracking-tight">
+                {getLocalized(adminMessage, 'administrator_name', lang) || t.adminName}
+              </h4>
+              <p className="text-blue-400 text-sm font-black uppercase tracking-[0.2em] opacity-80 flex items-center gap-2 justify-center">
+                <span className="w-4 h-[1px] bg-emerald-500" />
+                {adminMessage?.role || t.adminRole}
+                <span className="w-4 h-[1px] bg-emerald-500" />
+              </p>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Community Voices */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-white">
+      {/* 7. Standardized Community Voices */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, margin: "-100px" }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        className="py-24 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Voice of the People</h2>
-            <p className="text-lg text-slate-500">Real stories from our residents across the Woreda.</p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+              <Quote className="w-3.5 h-3.5" />
+              Public Sentiment
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Voice of the People</h2>
+            <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto">Real impacts of administrative excellence, shared directly by our residents.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
+
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               { name: "Tadese Hirpha", role: "Local Farmer", text: "The new access road to Beke Kelate has changed my life. I can now transport my teff to the market in half the time." },
               { name: "Alemitu Gemechu", role: "Teacher", text: "Seeing the new high school laboratory makes me hopeful for my children's future. Education is truly prioritized here." },
               { name: "Girma Tolosa", role: "Elder", text: "The health extension workers are very active in our kebele. We feel supported and cared for by our administration." },
             ].map((voice, i) => (
-              <div key={i} className="p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 relative">
-                <Quote className="w-12 h-12 text-woreda-green/20 absolute top-8 left-8" />
-                <p className="text-slate-600 italic mb-8 relative z-10 pt-4 leading-relaxed">"{voice.text}"</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center font-bold text-woreda-green shadow-sm">{voice.name[0]}</div>
+              <motion.div 
+                key={i}
+                whileHover={{ y: -10 }}
+                className="p-12 bg-slate-50 rounded-[3rem] border border-slate-100 relative shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden"
+              >
+                <Quote className="w-16 h-16 text-emerald-600 opacity-[0.03] absolute top-8 left-8" />
+                <p className="text-slate-600 italic mb-10 relative z-10 pt-6 leading-relaxed font-light text-lg">"{voice.text}"</p>
+                <div className="flex items-center gap-5 mt-auto pt-8 border-t border-slate-100">
+                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center font-black text-emerald-600 shadow-sm border border-slate-100 text-xl">{voice.name[0]}</div>
                   <div>
-                    <div className="font-bold text-slate-900">{voice.name}</div>
-                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">{voice.role}</div>
+                    <div className="font-black text-slate-900 tracking-tight uppercase text-xs">{voice.name}</div>
+                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">{voice.role}</div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Upcoming Events - MOVED TO BOTTOM */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-slate-50">
+      {/* 8. Standardized Upcoming Events */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, margin: "-100px" }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        className="py-24 bg-slate-50 relative overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-500/5 blur-[100px] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">{t.navEvents || "Upcoming Events"}</h2>
-              <div className="w-20 h-1.5 bg-woreda-green rounded-full"></div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-100/30">
+                <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                Regional Agenda
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Upcoming <span className="text-blue-600">Events</span></h2>
+              <p className="text-lg text-slate-500 font-light leading-relaxed border-l-2 border-emerald-500/20 pl-6">Key dates for community gatherings, governmental forums, and cultural celebrations.</p>
             </div>
-            <Link to="/events" className="hidden md:flex items-center gap-2 text-sm font-bold text-woreda-green hover:underline uppercase tracking-widest">
-              View All Events <ChevronRight className="w-4 h-4" />
+            <Link 
+              to="/events" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 font-black rounded-2xl hover:bg-slate-900 hover:text-white shadow-sm transition-all group uppercase tracking-widest text-[10px] border border-slate-100 hover:border-emerald-500/20"
+            >
+              Timeline <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-emerald-500" />
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-8">
             {newsLoading ? (
               [1, 2, 3].map((i) => (
-                <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 animate-pulse">
-                  <div className="h-48 bg-slate-200"></div>
-                  <div className="p-8">
-                    <div className="h-4 bg-slate-200 rounded w-1/3 mb-4"></div>
-                    <div className="h-6 bg-slate-200 rounded w-full mb-2"></div>
-                  </div>
-                </div>
+                <div key={i} className="h-96 bg-white rounded-[2.5rem] animate-pulse shadow-sm border border-slate-100" />
               ))
             ) : events.length > 0 ? (
               events.map((eventItem, i) => (
                 <motion.div
                   key={eventItem.id}
-                  whileHover={{ y: -10 }}
-                  className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 group cursor-pointer flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group"
                 >
-                  <Link to={`/events/${eventItem.id}`} className="flex flex-col h-full">
-                    <div className="h-48 overflow-hidden relative">
+                  <Link to={`/events/${eventItem.id}`} className="flex flex-col h-full bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 hover:border-emerald-500/10 shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div className="h-56 overflow-hidden relative">
                       {eventItem.image ? (
                         <img
                           src={getImageUrl(eventItem.image)}
                           alt={getLocalized(eventItem, 'title', lang)}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                           referrerPolicy="no-referrer"
                         />
                       ) : (
-                        <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-                          <Calendar className="w-8 h-8 text-slate-300" />
+                        <div className="w-full h-full bg-slate-50 flex items-center justify-center">
+                          <Calendar className="w-10 h-10 text-slate-200" />
                         </div>
                       )}
 
-                      {eventItem.status && (
-                        <div className={`absolute top-4 left-4 px-3 py-1 backdrop-blur text-[10px] font-black uppercase tracking-[0.2em] rounded shadow-sm ${eventItem.status === 'upcoming' ? 'bg-emerald-500/90 text-white' : 'bg-white/90 text-slate-900'}`}>
-                          {eventItem.status}
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-6 flex flex-col flex-grow">
-                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 font-bold uppercase tracking-widest mb-3">
-                        {eventItem.event_date && (
-                          <span className="flex items-center gap-1 text-woreda-green">
-                            <Calendar className="w-3 h-3" />
-                            {new Date(eventItem.event_date).toLocaleDateString()}
-                          </span>
-                        )}
+                      <div className="absolute top-6 left-6 px-4 py-1.5 bg-white/90 backdrop-blur rounded-lg text-[9px] font-black uppercase tracking-[0.2em] shadow-xl text-slate-900 border border-emerald-500/20">
+                        {eventItem.status || 'Active'}
                       </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-4 line-clamp-2 group-hover:text-woreda-green transition-colors leading-tight">
+                    </div>
+                    
+                    <div className="p-10 flex flex-col flex-grow">
+                      <div className="flex items-center gap-2 text-[10px] text-blue-600 font-black uppercase tracking-[0.2em] mb-4">
+                        <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                        {eventItem.event_date ? new Date(eventItem.event_date).toLocaleDateString('en-US', {
+                          month: 'long', day: 'numeric', year: 'numeric'
+                        }) : 'Date TBA'}
+                      </div>
+                      <h3 className="text-xl font-black text-slate-900 mb-6 line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors border-l-2 border-transparent group-hover:border-emerald-500 pl-0 group-hover:pl-4 transition-all">
                         {getLocalized(eventItem, 'title', lang)}
                       </h3>
-                      <div className="mt-auto flex items-center text-sm font-black text-woreda-green uppercase tracking-widest">
-                        Event Details <ChevronRight className="w-4 h-4 ml-1" />
+                      <div className="mt-auto flex items-center justify-between pt-6 border-t border-slate-50">
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-emerald-500 transition-colors">Explore Event</span>
+                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
                       </div>
                     </div>
                   </Link>
                 </motion.div>
               ))
             ) : (
-              <div className="col-span-3 text-center py-12 text-slate-400">
-                <p>No upcoming events at the moment.</p>
+              <div className="col-span-3 text-center py-20 bg-white rounded-[3rem] border border-dashed border-slate-200 text-slate-400 font-light">
+                No events currently on the official regional calendar.
               </div>
             )}
           </div>
@@ -733,16 +894,54 @@ export default function Home({ lang }: HomeProps) {
       </motion.section>
 
 
-      {/* Administrative Divisions CTA */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="py-24 bg-woreda-green text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">Administrative Divisions</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-12">
-            Abuna Ginde Beret Woreda is organized into 44 administrative divisions, including 3 Urban Centers and 41 Rural Kebeles.
-          </p>
-          <button className="px-12 py-6 bg-white text-woreda-green font-black rounded-2xl shadow-2xl hover:bg-slate-50 transition-all transform hover:-translate-y-1 uppercase tracking-widest flex items-center gap-3 mx-auto">
-            Explore Full Directory <ArrowRight className="w-6 h-6" />
-          </button>
+      {/* 9. HIGH-IMPACT Administrative Divisions CTA */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, margin: "-100px" }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        className="py-32 bg-slate-900 text-white relative overflow-hidden"
+      >
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[120px] -mr-96 -mt-96" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] -ml-64 -mb-64" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-blue-500/10 border border-emerald-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-12 shadow-2xl">
+              <MapPin className="w-4 h-4 text-emerald-400" />
+              Administrative Geometry
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-tight drop-shadow-2xl">
+              Our Territorial <span className="text-emerald-400">Governance</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-slate-400 font-light max-w-3xl mx-auto mb-16 leading-relaxed">
+              Abuna Ginde Beret Woreda is strategically organized into <span className="text-white font-bold border-b-2 border-emerald-500/30">44 divisions</span>: including 3 Urban Centers and 41 Rural Kebeles.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-16 max-w-2xl mx-auto">
+              {[
+                { label: "Urban Centers", value: "03" },
+                { label: "Rural Kebeles", value: "41" },
+                { label: "Total Divisions", value: "44" }
+              ].map((item, i) => (
+                <div key={i} className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] group hover:bg-emerald-500/10 transition-colors">
+                  <div className="text-4xl font-black text-white group-hover:text-emerald-400 transition-colors mb-2 tracking-tighter">{item.value}</div>
+                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{item.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <Link 
+              to="/kebeles"
+              className="group relative inline-flex items-center gap-4 px-12 py-6 bg-blue-600 text-white font-black rounded-[2.5rem] shadow-[0_20px_50px_rgba(37,99,235,0.3)] hover:bg-white hover:text-slate-900 transition-all duration-500 uppercase tracking-widest text-xs overflow-hidden"
+            >
+              <span className="relative z-10">Access Kebele Directory</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-0" />
+            </Link>
+          </div>
         </div>
       </motion.section>
 
@@ -759,8 +958,8 @@ export default function Home({ lang }: HomeProps) {
           className="grayscale contrast-125 opacity-80"
         />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <div className="w-20 h-20 bg-woreda-green/20 rounded-full flex items-center justify-center animate-ping">
-            <div className="w-6 h-6 bg-woreda-green rounded-full shadow-2xl border-4 border-white"></div>
+          <div className="w-20 h-20 bg-blue-600/20 rounded-full flex items-center justify-center animate-ping">
+            <div className="w-6 h-6 bg-blue-600 rounded-full shadow-2xl border-4 border-white"></div>
           </div>
         </div>
         <div className="absolute bottom-12 left-12 glass p-10 rounded-[2.5rem] max-w-md gov-shadow">
@@ -770,7 +969,7 @@ export default function Home({ lang }: HomeProps) {
             href="https://www.openstreetmap.org/?mlat=9.75&amp;mlon=37.75#map=10/9.75/37.75"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-black text-woreda-green uppercase tracking-widest hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-black text-blue-600 uppercase tracking-widest hover:underline"
           >
             Get Directions <ExternalLink className="w-4 h-4" />
           </a>

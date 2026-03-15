@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
-  Tractor,
-  School,
-  HeartPulse,
-  Building2,
+  Search,
   ArrowRight,
+  Building2,
+  Building,
   ShieldCheck,
-  Briefcase,
-  Droplets,
-  Gavel,
-  Newspaper
+  Waves,
+  ShoppingBag,
+  Users,
+  UserCheck,
+  HardHat,
+  Sprout,
+  GraduationCap,
+  Wallet,
+  HeartPulse,
+  LayoutGrid,
+  Landmark,
+  Heart,
+  HandCoins,
+  Scale,
+  Shield,
+  Gavel
 } from 'lucide-react';
 import { translations, Language } from '../constants';
 import { fetchSectors } from '../services/api';
@@ -22,21 +33,43 @@ interface SectorsProps {
 }
 
 const iconMap: Record<string, any> = {
-  agriculture: Tractor,
-  education: School,
+  agriculture: Sprout,
+  education: GraduationCap,
   health: HeartPulse,
-  administration: Building2,
-  finance: Briefcase,
+  administration: Building,
+  finance: Wallet,
   security: ShieldCheck,
-  water: Droplets,
-  justice: Gavel,
-  trade: Newspaper
+  water: Waves,
+  trade: ShoppingBag,
+  social: Users,
+  women: UserCheck,
+  infrastructure: HardHat,
+  administration_office: Building2,
+  landmark: Landmark,
+  heart: Heart,
+  revenues: HandCoins,
+  scale: Scale,
+  shield: Shield,
+  gavel: Gavel,
+  hardhat: HardHat,
+  building: Building,
+  building2: Building2,
+  sprout: Sprout,
+  graduationcap: GraduationCap,
+  wallet: Wallet,
+  heartpulse: HeartPulse,
+  shieldcheck: ShieldCheck,
+  shoppingbag: ShoppingBag,
+  users: Users,
+  waves: Waves,
+  handcoins: HandCoins
 };
 
 export default function Sectors({ lang }: SectorsProps) {
   const t = translations[lang];
   const [sectors, setSectors] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     async function loadData() {
@@ -52,65 +85,135 @@ export default function Sectors({ lang }: SectorsProps) {
     loadData();
   }, []);
 
-  return (
-    <div className="pt-24 min-h-screen bg-slate-50">
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-24">
-            <motion.h1
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              className="text-5xl md:text-7xl font-bold text-slate-900 mb-6"
-            >
-              {t.sectorsTitle}
-            </motion.h1>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">{t.sectorsSubtitle}</p>
-          </div>
+  const filteredSectors = sectors.filter(sector => {
+    const name = getLocalized(sector, 'name', lang).toLowerCase();
+    const desc = getLocalized(sector, 'description', lang).toLowerCase();
+    return name.includes(searchTerm.toLowerCase()) || desc.includes(searchTerm.toLowerCase());
+  });
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+  return (
+    <div className="min-h-screen bg-white">
+      {/* PREMIUM HERO SECTION */}
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/hero-bg.png" 
+            alt="Hero Background" 
+            className="w-full h-full object-cover scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-white"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-woreda-gold/20 border border-woreda-gold/30 text-woreda-gold text-xs font-black uppercase tracking-[0.2em] mb-8">
+              <LayoutGrid className="w-4 h-4" />
+              Institutional Framework
+            </div>
+            <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
+              {t.sectorsTitle}
+            </h1>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light">
+              Discover the specialized administrative offices driving sustainable development and community services across Abuna Ginde Beret.
+            </p>
+          </motion.div>
+
+          {/* SEARCH BAR */}
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mt-12 max-w-xl mx-auto"
+          >
+            <div className="relative group">
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-woreda-green transition-colors" />
+              <input 
+                type="text"
+                placeholder="Search sectors and departments..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-16 pr-8 py-6 bg-white rounded-2xl shadow-2xl border-none text-slate-900 placeholder:text-slate-400 focus:ring-4 focus:ring-woreda-green/20 transition-all text-lg"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTORS GRID */}
+      <section className="py-24 relative -mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {loading ? (
               [1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="h-64 bg-white rounded-[3rem] animate-pulse border border-slate-100"></div>
+                <div key={i} className="h-[400px] bg-slate-50 rounded-[2.5rem] animate-pulse"></div>
               ))
-            ) : sectors.length > 0 ? (
-              sectors.map((sector, i) => {
-                const Icon = iconMap[sector.slug] || iconMap[sector.name.toLowerCase()] || Building2;
-                return (
-                  <motion.div
-                    key={sector.id || i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    whileHover={{ y: -10 }}
-                    className="group"
-                  >
-                    <Link to={`/sectors/${sector.id}`} className="block h-full p-10 bg-white rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all relative overflow-hidden">
-                      <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-125 transition-transform">
-                        <Icon className="w-32 h-32" />
-                      </div>
-
-                      <div className="relative z-10">
-                        <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-woreda-green mb-8 group-hover:bg-woreda-green group-hover:text-white transition-colors">
-                          <Icon className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-4">{getLocalized(sector, 'name', lang)}</h3>
-                        <div
-                          className="text-slate-500 leading-relaxed mb-8 line-clamp-3"
-                          dangerouslySetInnerHTML={{ __html: getLocalized(sector, 'description', lang) }}
-                        />
-                        <div className="flex items-center gap-2 text-sm font-black text-woreda-green uppercase tracking-widest">
-                          Explore Sector <ArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                );
-              })
             ) : (
-              <div className="col-span-3 text-center py-12 text-slate-400">
-                <p>No sectors available at the moment.</p>
-              </div>
+              <AnimatePresence mode="popLayout">
+                {filteredSectors.map((sector, i) => {
+                  const sectorName = sector.name_en?.toLowerCase() || "";
+                  const iconKey = sector.icon?.toLowerCase() || sectorName.split(' ')[0];
+                  const Icon = iconMap[iconKey] || Building2;
+                  
+                  return (
+                    <motion.div
+                      layout
+                      key={sector.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ delay: i * 0.05 }}
+                      className="group"
+                    >
+                      <Link 
+                        to={`/sectors/${sector.id}`} 
+                        className="flex flex-col h-full p-8 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-woreda-green/10 transition-all duration-500 overflow-hidden relative"
+                      >
+                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                          <Icon className="w-40 h-40 -rotate-12 translate-x-12" />
+                        </div>
+
+                        <div className="relative z-10">
+                          <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-woreda-green group-hover:text-white transition-all duration-500 mb-10 shadow-inner">
+                            <Icon className="w-7 h-7" />
+                          </div>
+
+                          <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-woreda-green transition-colors">
+                            {getLocalized(sector, 'name', lang)}
+                          </h3>
+
+                          <div 
+                            className="text-slate-500 line-clamp-3 text-sm leading-relaxed mb-10"
+                            dangerouslySetInnerHTML={{ __html: getLocalized(sector, 'description', lang) }}
+                          />
+
+                          <div className="mt-auto flex items-center justify-between">
+                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-woreda-green/40 group-hover:text-woreda-green transition-colors">
+                              View Mandate <ArrowRight className="w-3 h-3" />
+                            </div>
+                            <div className="w-10 h-1 rounded-full bg-slate-100 group-hover:bg-woreda-green group-hover:w-20 transition-all duration-500"></div>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
             )}
           </div>
+
+          {!loading && filteredSectors.length === 0 && (
+            <div className="text-center py-24">
+              <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="w-10 h-10 text-slate-200" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">No match found</h3>
+              <p className="text-slate-500">We couldn't find any sector matching "{searchTerm}".</p>
+            </div>
+          )}
         </div>
       </section>
     </div>
