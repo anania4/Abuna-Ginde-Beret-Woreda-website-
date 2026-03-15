@@ -1,147 +1,139 @@
-# Woreda Management System
+# Abuna Ginde Beret Woreda Administration
 
-A unified web application for managing woreda (district) information, built with Strapi CMS backend and Vite frontend.
+Full-stack web application for the Abuna Ginde Beret Woreda Administration.
 
-## 🚀 Quick Start
+## Project Structure
 
-### Prerequisites
-- Node.js >= 20.0.0
-- npm >= 6.0.0
-
-### Installation
-
-1. Install dependencies:
-```bash
-npm install
-cd backend && npm install
+```
+.
+├── backend/                    # Django REST API
+│   ├── woreda_backend/        # Django project settings
+│   ├── api/                   # API app with models & views
+│   ├── requirements.txt       # Python dependencies
+│   └── start.bat              # Quick start script
+│
+├── frontend/                  # React frontend
+│   ├── src/                   # Source code
+│   ├── public/                # Static assets
+│   └── package.json           # Node dependencies
+│
+└── backend-strapi-backup/     # Old backend (can be deleted)
 ```
 
-2. Configure environment:
+## Tech Stack
+
+### Backend
+- Django 5.0
+- Django REST Framework
+- SQLite (development) / PostgreSQL (production)
+- Python 3.x
+
+### Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+
+## Quick Start
+
+**🎉 Frontend and Backend are now connected!** See [CONNECTION-COMPLETE.md](CONNECTION-COMPLETE.md)
+
+**New to the project? Start here:** [QUICK-START.md](QUICK-START.md)
+
+**Test the connection:** [TEST-CONNECTION.md](TEST-CONNECTION.md)
+
+### 1. Start Backend
+
 ```bash
 cd backend
-cp .env.example .env
-# Edit .env with your configuration
+start.bat
 ```
 
-3. Build and start the unified server:
+This will:
+- Create virtual environment
+- Install dependencies
+- Run migrations
+- Create superuser (you'll be prompted)
+- Start server at http://localhost:3000
+
+### 2. Start Frontend
+
 ```bash
-# From root directory
-start-unified.bat
+cd frontend
+npm install
+npm run dev
 ```
 
-The application will be available at:
-- **Frontend**: http://localhost:1337/
-- **Admin Panel**: http://localhost:1337/admin
-- **API**: http://localhost:1337/api
+Frontend will be available at http://localhost:5173
 
-## 📁 Project Structure
+## Access Points
 
-```
-woredaNew/
-├── backend/              # Strapi CMS backend
-│   ├── src/
-│   │   ├── api/         # API endpoints
-│   │   ├── handlers/    # Request handlers
-│   │   ├── middlewares/ # Custom middlewares
-│   │   └── admin/       # Admin customizations
-│   ├── config/          # Strapi configuration
-│   ├── database/        # Database files
-│   └── public/          # Static frontend files (built)
-├── src/                 # Frontend source code
-│   ├── api.js          # API client
-│   └── main.js         # Main entry point
-├── public/             # Frontend static assets
-└── dist/               # Frontend build output
-```
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3000/api/
+- **Admin Panel**: http://localhost:3000/admin/
 
-## 🛠️ Development
+## Features
 
-### Frontend Development
-```bash
-npm run dev:frontend
-```
+### Content Management
+- News articles
+- Events calendar
+- Photo gallery
+- Government sectors
+- Development projects
+- FAQs
+- Kebele information
+
+### Admin Features
+- Rich text editor
+- Image uploads
+- Draft/publish workflow
+- Content filtering & search
+- User management
+
+## Documentation
+
+- [Django Setup Guide](DJANGO-SETUP-GUIDE.md) - Detailed backend setup
+- [Backend Implementation](MIGRATION-SUMMARY.md) - Technical details
+- [Backend README](backend/README.md) - API documentation
+
+## Development
 
 ### Backend Development
-```bash
-npm run dev:backend
-```
 
-### Build Frontend
-```bash
-npm run build:frontend
-```
-
-### Deploy Frontend to Backend
-```bash
-npm run deploy:frontend
-```
-
-## 📚 Available Documentation
-
-- **GALLERY-SETUP-GUIDE.md** - Complete guide for setting up the gallery feature
-- **ADD-GALLERY-PHOTO.md** - Instructions for adding photos to the gallery
-- **ENABLE-GALLERY-PERMISSIONS.md** - How to configure gallery permissions
-- **EVENTS-SETUP-GUIDE.md** - Guide for setting up events functionality
-- **STRAPI-SETUP-GUIDE.md** - Strapi configuration and setup
-- **UNIFIED-SETUP-GUIDE.md** - Unified frontend routing setup
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Key environment variables in `backend/.env`:
-- `HOST` - Server host (default: 0.0.0.0)
-- `PORT` - Server port (default: 1337)
-- `APP_KEYS` - Application keys for security
-- `API_TOKEN_SALT` - Salt for API tokens
-- `ADMIN_JWT_SECRET` - JWT secret for admin authentication
-- `TRANSFER_TOKEN_SALT` - Salt for transfer tokens
-- `JWT_SECRET` - JWT secret for user authentication
-
-## 🎯 Features
-
-- **Unified Routing**: Single server for frontend, admin, and API
-- **Content Management**: Strapi CMS for easy content management
-- **Gallery System**: Photo gallery with permissions
-- **Events Management**: Event creation and management
-- **News & FAQs**: News articles and frequently asked questions
-- **Sectors & Projects**: Sector and project information management
-- **Kebele Management**: District (kebele) information system
-
-## 🧪 Testing
-
-Run tests:
 ```bash
 cd backend
-npm test
+venv\Scripts\activate
+python manage.py runserver 0.0.0.0:3000
 ```
 
-## 📝 API Endpoints
+### Frontend Development
 
-- `GET /api/sectors` - List all sectors
-- `GET /api/projects` - List all projects
-- `GET /api/news-articles` - List news articles
-- `GET /api/faqs` - List FAQs
-- `GET /api/galleries` - List gallery items
-- `GET /api/kebeles` - List kebeles
-
-## 🔐 Permissions
-
-Gallery permissions need to be configured in the Strapi admin panel. See `ENABLE-GALLERY-PERMISSIONS.md` for details.
-
-## 🐛 Troubleshooting
-
-### Build Errors
-If you encounter build errors, try:
 ```bash
-cd backend
-npm install @strapi/design-system
-npm run build
+cd frontend
+npm run dev
 ```
 
-### Permission Issues
-Check the Strapi admin panel under Settings > Users & Permissions Plugin > Roles > Public
+## API Endpoints
 
-## 📄 License
+All endpoints at `http://localhost:3000/api/`:
 
-Private project - All rights reserved
+- `/admin-messages/` - Admin welcome message
+- `/events/` - Community events
+- `/faqs/` - FAQs
+- `/galleries/` - Photo gallery
+- `/news/` - News articles
+- `/sectors/` - Government sectors
+- `/projects/` - Development projects
+- `/kebeles/` - Administrative divisions
+- `/global-settings/` - Site configuration
+
+## Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Test thoroughly
+4. Submit a pull request
+
+## License
+
+© 2025 Abuna Ginde Beret Woreda Administration
