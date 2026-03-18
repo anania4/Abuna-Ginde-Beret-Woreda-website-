@@ -41,7 +41,7 @@
 ### 3.2 Test Static Asset Serving
 - [ ] Verify React CSS loads from /assets/ URLs
 - [ ] Verify React JavaScript loads from /assets/ URLs
-- [ ] Test image assets load correctly
+- [x] Test image assets load correctly
 - [ ] Confirm Django admin static files still work
 
 ### 3.3 Test Client-Side Routing

@@ -21,7 +21,7 @@ export const API_ENDPOINTS = {
 // Helper to get full image URL
 export function getImageUrl(imagePath: string | null): string {
   if (!imagePath) return '/placeholder.jpg';
-  if (imagePath.startsWith('http')) return imagePath;
-  // Use relative URL in production, absolute in development
-  return isDevelopment ? `http://localhost:8000${imagePath}` : imagePath;
+  
+  // Django API returns full URLs, so return as-is
+  return imagePath;
 }

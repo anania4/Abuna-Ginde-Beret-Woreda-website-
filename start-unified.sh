@@ -14,5 +14,17 @@ echo "React build completed successfully!"
 echo
 
 cd ../backend
+
+# Check if virtual environment exists and activate it
+if [ -d "venv" ]; then
+    echo "Activating Python virtual environment..."
+    source venv/bin/activate
+elif [ -d "../venv" ]; then
+    echo "Activating Python virtual environment..."
+    source ../venv/bin/activate
+else
+    echo "Warning: No virtual environment found. Using system Python."
+fi
+
 echo "Starting Django server on port 3000..."
 python manage.py runserver 3000

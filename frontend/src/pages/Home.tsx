@@ -742,8 +742,8 @@ export default function Home({ lang }: HomeProps) {
 
           <div className="mt-20 flex flex-col items-center">
             <div className="relative group">
-              <div className="absolute inset-0 bg-blue-500 blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="w-64 h-64 md:w-72 md:h-72 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold text-5xl mb-16 border-4 border-blue-600 shadow-3xl overflow-hidden relative z-10">
+              <div className="absolute inset-0 bg-blue-500 blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="w-80 h-80 md:w-96 md:h-96 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold text-7xl mb-16 border-4 border-blue-600 shadow-3xl overflow-hidden relative z-10">
                 {adminMessage?.image ? (
                   <img src={getImageUrl(adminMessage.image)} alt={getLocalized(adminMessage, 'administrator_name', lang)} className="w-full h-full object-cover" />
                 ) : (
@@ -752,7 +752,7 @@ export default function Home({ lang }: HomeProps) {
                   </div>
                 )}
                 {/* Emerald Hint on Photo Frame */}
-                <div className="absolute bottom-4 right-4 w-16 h-16 bg-emerald-500 rounded-full border-[10px] border-slate-800 flex items-center justify-center shadow-2xl">
+                <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 lg:bottom-14 lg:right-14 w-16 h-16 bg-emerald-500 rounded-full border-[10px] border-slate-800 flex items-center justify-center shadow-2xl">
                   <div className="w-4 h-4 bg-white rounded-full" />
                 </div>
               </div>

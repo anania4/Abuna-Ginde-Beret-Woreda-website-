@@ -1,10 +1,8 @@
 """
-Monkey patch for Python 3.14 compatibility with Django templates.
-This fixes the AttributeError: 'super' object has no attribute 'dicts'
-that occurs because Python 3.14 changed how super() works in __copy__.
+Monkey patches for Python 3.14 compatibility with Django and related packages.
 
-The fix: bypass __init__ entirely and copy __dict__ + dicts directly,
-which preserves all instance attributes (_processors_index, _processors, etc.)
+1. Django template context patch - fixes AttributeError: 'super' object has no attribute 'dicts'
+2. Modeltranslation patch - fixes MultilingualQuerySet._update() argument mismatch
 """
 from copy import copy
 import django.template.context as context_module
@@ -30,3 +28,31 @@ if hasattr(context_module, 'RequestContext'):
     context_module.RequestContext.__copy__ = _patched_copy
 
 print("[OK] Django template context patch applied for Python 3.14 compatibility")
+
+
+# Modeltranslation compatibility patch
+try:
+    from modeltranslation.manager import MultilingualQuerySet
+    from django.db import models
+    
+    def _patched_update(self, values, returning_fields=None):
+        """
+        Fixed _update method for MultilingualQuerySet (Python 3.14 compatible).
+        The issue is that Django 6.0+ changed the _update method signature,
+        but modeltranslation expects the old signature.
+        """
+        # Call the parent QuerySet._update method directly with proper arguments
+        if returning_fields is not None:
+            return models.QuerySet._update(self, values, returning_fields)
+        else:
+            return models.QuerySet._update(self, values)
+    
+    # Apply the patch
+    MultilingualQuerySet._update = _patched_update
+    print("[OK] Modeltranslation MultilingualQuerySet patch applied for Python 3.14 compatibility")
+    
+except ImportError:
+    # modeltranslation not installed, skip patch
+    pass
+except Exception as e:
+    print(f"[WARNING] Could not apply modeltranslation patch: {e}")

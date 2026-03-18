@@ -1,9 +1,29 @@
 from django.contrib import admin
+from django import forms
+from django.utils import timezone
+import datetime
 from unfold.admin import ModelAdmin
 from .models import (
     AdminMessage, Event, FAQ, Gallery, News,
     Sector, Project, GlobalSetting, Kebele
 )
+
+class EventAdminForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = '__all__'
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # HTML5 minimum date restriction for the browser picker
+        tomorrow = timezone.now().date() + datetime.timedelta(days=1)
+        self.fields['event_date'].widget.attrs['min'] = tomorrow.isoformat()
+
+    def clean_event_date(self):
+        date = self.cleaned_data.get('event_date')
+        if date and date <= timezone.now().date():
+            raise forms.ValidationError("The event date must be strictly after today.")
+        return date
 
 
 def get_translation_fieldsets(fields, model_name, extra_fields=None):
@@ -54,6 +74,7 @@ class AdminMessageAdmin(ModelAdmin):
 
 @admin.register(Event)
 class EventAdmin(ModelAdmin):
+    form = EventAdminForm
     list_display = ['title', 'event_date', 'location', 'category', 'status', 'published']
     list_filter = ['category', 'status', 'published', 'event_date']
     list_editable = ['published']

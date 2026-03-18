@@ -2,18 +2,13 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Apply Python 3.14 compatibility patches BEFORE importing Django
-try:
-    from . import patches
-except ImportError:
-    pass
-
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-this-in-production')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
+SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 INSTALLED_APPS = [
@@ -83,6 +78,12 @@ LANGUAGE_CODE = 'en'
 TIME_ZONE = 'Africa/Addis_Ababa'
 USE_I18N = True
 USE_TZ = True
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d', '%d/%m/%Y', '%d/%m/%y', '%m/%d/%Y', '%m/%d/%y',
+    '%d-%m-%Y', '%b %d %Y', '%b %d, %Y',
+    '%d %b %Y', '%d %b, %Y', '%B %d %Y', '%B %d, %Y',
+    '%d %B %Y', '%d %B, %Y',
+]
 
 # Multilingual support - English and Oromo
 from django.utils.translation import gettext_lazy as _
@@ -109,14 +110,14 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # React frontend static files
 frontend_assets = BASE_DIR.parent / 'frontend' / 'dist' / 'assets'
 STATICFILES_DIRS = [frontend_assets] if frontend_assets.exists() else []
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -137,6 +138,15 @@ SECURE_PROXY_SSL_HEADER = None  # No SSL on localhost
 # Upload Settings
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10MB
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10MB
+
+# Production Security Settings
+if not DEBUG:
+    SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'True') == 'True'
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 # REST Framework Settings
 REST_FRAMEWORK = {
@@ -301,3 +311,9 @@ def environment_callback(request):
 def dashboard_callback(request, context):
     """Customize dashboard"""
     return context
+
+# Apply Python 3.14 compatibility patches
+try:
+    from . import patches
+except ImportError:
+    pass
