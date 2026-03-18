@@ -36,41 +36,44 @@ Full-stack web application for the Abuna Ginde Beret Woreda Administration.
 
 ## Quick Start
 
-**🎉 Frontend and Backend are now connected!** See [CONNECTION-COMPLETE.md](CONNECTION-COMPLETE.md)
+**🎉 Unified Server Setup!** Django now serves both the React frontend and API from a single server.
 
-**New to the project? Start here:** [QUICK-START.md](QUICK-START.md)
-
-**Test the connection:** [TEST-CONNECTION.md](TEST-CONNECTION.md)
-
-### 1. Start Backend
+### Option 1: Unified Server (Recommended)
 
 ```bash
-cd backend
-start.bat
+./start-unified.sh
 ```
 
 This will:
-- Create virtual environment
-- Install dependencies
-- Run migrations
-- Create superuser (you'll be prompted)
-- Start server at http://localhost:3000
+- Build the React frontend
+- Start Django server on port 3000
+- Serve both frontend and API from one server
 
-### 2. Start Frontend
+### Option 2: Separate Development Servers
 
+For development with hot reload:
+
+**Backend:**
 ```bash
-cd frontend
-npm install
-npm run dev
+./start-backend.sh
 ```
 
-Frontend will be available at http://localhost:5173
+**Frontend:**
+```bash
+./start-frontend.sh
+```
 
 ## Access Points
 
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:3000/api/
+**Unified Server (Production-like):**
+- **Everything**: http://localhost:3000
 - **Admin Panel**: http://localhost:3000/admin/
+- **API**: http://localhost:3000/api/
+
+**Development Servers:**
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:8000/api/
+- **Admin Panel**: http://localhost:8000/admin/
 
 ## Features
 
@@ -102,8 +105,7 @@ Frontend will be available at http://localhost:5173
 
 ```bash
 cd backend
-venv\Scripts\activate
-python manage.py runserver 0.0.0.0:3000
+python manage.py runserver 3000
 ```
 
 ### Frontend Development
@@ -115,7 +117,7 @@ npm run dev
 
 ## API Endpoints
 
-All endpoints at `http://localhost:3000/api/`:
+All endpoints at `http://localhost:3000/api/` (unified server) or `http://localhost:8000/api/` (development):
 
 - `/admin-messages/` - Admin welcome message
 - `/events/` - Community events
