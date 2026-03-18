@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Briefcase, MapPin, Users, Tractor, ChevronLeft, CheckCircle2, AlertCircle, ShieldCheck, Building2, Droplets, Gavel, Newspaper } from 'lucide-react';
+import { ChevronLeft, CheckCircle2, AlertCircle } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchServiceById } from '../services/api';
 import { getLocalized } from '../utils/lang';
@@ -11,15 +12,24 @@ interface ServiceDetailProps {
 }
 
 const iconMap: Record<string, any> = {
-  briefcase: Briefcase,
-  mapPin: MapPin,
-  users: Users,
-  tractor: Tractor,
-  shield: ShieldCheck,
-  building: Building2,
-  water: Droplets,
-  justice: Gavel,
-  news: Newspaper
+  briefcase: CustomIcons.BusinessIcon,
+  business: CustomIcons.BusinessIcon,
+  mapPin: CustomIcons.LocationIcon,
+  location: CustomIcons.LocationIcon,
+  users: CustomIcons.PopulationIcon,
+  population: CustomIcons.PopulationIcon,
+  tractor: CustomIcons.AgriIcon,
+  agriculture: CustomIcons.AgriIcon,
+  shield: CustomIcons.LicensingIcon,
+  licensing: CustomIcons.LicensingIcon,
+  building: CustomIcons.AdminBuildingIcon,
+  administration: CustomIcons.AdminBuildingIcon,
+  water: CustomIcons.WaterIcon,
+  justice: CustomIcons.GovernanceIcon,
+  governance: CustomIcons.GovernanceIcon,
+  news: CustomIcons.NewsIcon,
+  rapid: CustomIcons.RapidIcon,
+  default: CustomIcons.FileIcon
 };
 
 export default function ServiceDetail({ lang }: ServiceDetailProps) {
@@ -61,7 +71,7 @@ export default function ServiceDetail({ lang }: ServiceDetailProps) {
     );
   }
 
-  const Icon = iconMap[service.icon] || Briefcase;
+  const Icon = iconMap[service.icon] || iconMap[service.icon_name] || iconMap.default;
 
   return (
     <div className="pt-24">
@@ -71,7 +81,7 @@ export default function ServiceDetail({ lang }: ServiceDetailProps) {
             <ChevronLeft className="w-4 h-4" /> Back to Services
           </Link>
           <div className="flex flex-col md:flex-row gap-10 items-start">
-            <div className="w-24 h-24 bg-white rounded-[2rem] flex items-center justify-center text-woreda-green shadow-xl border border-slate-100 flex-shrink-0">
+            <div className="w-24 h-24 bg-white rounded-[2rem] flex items-center justify-center text-blue-600 shadow-xl border border-slate-100 flex-shrink-0">
               <Icon className="w-12 h-12" />
             </div>
             <div>
@@ -104,7 +114,7 @@ export default function ServiceDetail({ lang }: ServiceDetailProps) {
                   <div className="grid gap-4">
                     {(getLocalized(service, 'requirements', lang) || '').split('\n').filter((r: string) => r.trim()).map((req: string, i: number) => (
                       <div key={i} className="flex items-start gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                        <CheckCircle2 className="w-6 h-6 text-woreda-green flex-shrink-0" />
+                        <CustomIcons.IntegrityIcon className="w-6 h-6 text-emerald-600 flex-shrink-0" />
                         <span className="text-slate-700 font-medium">{req}</span>
                       </div>
                     ))}

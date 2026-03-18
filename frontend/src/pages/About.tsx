@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Target, Eye, Users, ShieldCheck, HeartPulse, School, Award, Landmark } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchAdminMessage } from '../services/api';
 import { getImageUrl } from '../config';
@@ -46,7 +47,7 @@ export default function About({ lang }: AboutProps) {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-woreda-gold/20 border border-woreda-gold/30 text-woreda-gold text-xs font-black uppercase tracking-[0.2em] mb-8">
-              <Landmark className="w-4 h-4" />
+              <CustomIcons.LandmarkIcon className="w-4 h-4" />
               Institutional Heritage
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
@@ -70,10 +71,10 @@ export default function About({ lang }: AboutProps) {
               className="group p-12 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Target className="w-48 h-48 text-woreda-green" />
+                <CustomIcons.MissionIcon className="w-48 h-48 text-woreda-green" />
               </div>
-              <div className="w-16 h-16 bg-emerald-50 text-woreda-green rounded-2xl flex items-center justify-center mb-10 group-hover:bg-woreda-green group-hover:text-white transition-all duration-500 shadow-inner">
-                <Target className="w-8 h-8" />
+              <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-xl shadow-blue-500/10">
+                <CustomIcons.MissionIcon className="w-8 h-8" />
               </div>
               <h3 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">{t.missionTitle}</h3>
               <p className="text-lg text-slate-500 leading-relaxed font-light">{t.missionDesc}</p>
@@ -86,10 +87,10 @@ export default function About({ lang }: AboutProps) {
               className="group p-12 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Eye className="w-48 h-48 text-blue-600" />
+                <CustomIcons.VisionIcon className="w-48 h-48 text-blue-600" />
               </div>
               <div className="w-16 h-16 bg-blue-50 text-blue-600 border border-emerald-100/50 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-inner">
-                <Eye className="w-8 h-8" />
+                <CustomIcons.VisionIcon className="w-8 h-8" />
               </div>
               <h3 className="text-3xl font-black text-slate-900 mb-6 tracking-tight group-hover:text-blue-600 transition-colors">
                 {t.visionTitle}
@@ -123,15 +124,12 @@ export default function About({ lang }: AboutProps) {
           <div className="mt-20 flex flex-col items-center">
             <div className="relative group">
               <div className="absolute inset-0 bg-blue-500 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="w-28 h-28 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold text-4xl mb-8 border-4 border-blue-600 shadow-3xl overflow-hidden relative z-10">
+              <div className="w-20 h-20 bg-emerald-50 rounded-[2.5rem] flex items-center justify-center text-emerald-600 mb-8 border border-emerald-100 shadow-inner group-hover:scale-110 transition-transform duration-500">
                 {adminMessage?.image ? (
-                  <img src={getImageUrl(adminMessage.image)} alt={getLocalized(adminMessage, 'administrator_name', lang)} className="w-full h-full object-cover" />
+                  <img src={getImageUrl(adminMessage.image)} alt={getLocalized(adminMessage, 'administrator_name', lang)} className="w-full h-full object-cover rounded-[2.5rem]" />
                 ) : (
-                  <div className="w-full h-full bg-blue-600 flex items-center justify-center text-white">
-                    {adminMessage?.administrator_name?.[0] || "A"}
-                  </div>
+                  <CustomIcons.LandmarkIcon className="w-10 h-10" />
                 )}
-                {/* Emerald Hint on Photo Frame */}
                 <div className="absolute bottom-0 right-0 w-8 h-8 bg-emerald-500 rounded-full border-4 border-slate-800 flex items-center justify-center">
                   <div className="w-2 h-2 bg-white rounded-full" />
                 </div>
@@ -156,7 +154,7 @@ export default function About({ lang }: AboutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-              <Award className="w-3 h-3" />
+              <CustomIcons.ExcellenceIcon className="w-3 h-3" />
               Ethics & Principles
             </div>
             <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tight">Our Core Values</h2>
@@ -165,12 +163,12 @@ export default function About({ lang }: AboutProps) {
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {[
-              { name: "Transparency", icon: Eye, color: "bg-blue-50 text-blue-600", desc: "Clear and open governance in all administrative processes." },
-              { name: "Integrity", icon: ShieldCheck, color: "bg-emerald-50 text-emerald-600", desc: "Unwavering commitment to honesty and ethical standards." },
-              { name: "Inclusivity", icon: Users, color: "bg-amber-50 text-amber-600", desc: "Serving every citizen regardless of status or background." },
-              { name: "Excellence", icon: Target, color: "bg-rose-50 text-rose-600", desc: "Striving for the highest quality in public service delivery." },
-              { name: "Innovation", icon: HeartPulse, color: "bg-purple-50 text-purple-600", desc: "Embracing modern solutions for community development." },
-              { name: "Education", icon: School, color: "bg-indigo-50 text-indigo-600", desc: "Prioritizing knowledge and human capital growth." },
+              { name: "Transparency", icon: CustomIcons.VisionIcon, color: "bg-blue-50 text-blue-600", desc: "Clear and open governance in all administrative processes." },
+              { name: "Integrity", icon: CustomIcons.IntegrityIcon, color: "bg-emerald-50 text-emerald-600", desc: "Unwavering commitment to honesty and ethical standards." },
+              { name: "Inclusivity", icon: CustomIcons.PopulationIcon, color: "bg-amber-50 text-amber-600", desc: "Serving every citizen regardless of status or background." },
+              { name: "Excellence", icon: CustomIcons.MissionIcon, color: "bg-rose-50 text-rose-600", desc: "Striving for the highest quality in public service delivery." },
+              { name: "Innovation", icon: CustomIcons.InnovationIcon, color: "bg-purple-50 text-purple-600", desc: "Embracing modern solutions for community development." },
+              { name: "Education", icon: CustomIcons.EducationIcon, color: "bg-indigo-50 text-indigo-600", desc: "Prioritizing knowledge and human capital growth." },
             ].map((value, i) => (
               <motion.div 
                 key={i} 

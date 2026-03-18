@@ -1,29 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import {
-  Search,
-  ArrowRight,
-  Building2,
-  Building,
-  ShieldCheck,
-  Waves,
-  ShoppingBag,
-  Users,
-  UserCheck,
-  HardHat,
-  Sprout,
-  GraduationCap,
-  Wallet,
-  HeartPulse,
-  LayoutGrid,
-  Landmark,
-  Heart,
-  HandCoins,
-  Scale,
-  Shield,
-  Gavel
-} from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchSectors } from '../services/api';
 import { getLocalized } from '../utils/lang';
@@ -32,37 +11,31 @@ interface SectorsProps {
   lang: Language;
 }
 
-const iconMap: Record<string, any> = {
-  agriculture: Sprout,
-  education: GraduationCap,
-  health: HeartPulse,
-  administration: Building,
-  finance: Wallet,
-  security: ShieldCheck,
-  water: Waves,
-  trade: ShoppingBag,
-  social: Users,
-  women: UserCheck,
-  infrastructure: HardHat,
-  administration_office: Building2,
-  landmark: Landmark,
-  heart: Heart,
-  revenues: HandCoins,
-  scale: Scale,
-  shield: Shield,
-  gavel: Gavel,
-  hardhat: HardHat,
-  building: Building,
-  building2: Building2,
-  sprout: Sprout,
-  graduationcap: GraduationCap,
-  wallet: Wallet,
-  heartpulse: HeartPulse,
-  shieldcheck: ShieldCheck,
-  shoppingbag: ShoppingBag,
-  users: Users,
-  waves: Waves,
-  handcoins: HandCoins
+const iconMap: { [key: string]: any } = {
+    'administration office': CustomIcons.AdminBuildingIcon,
+    'the house office': CustomIcons.CouncilIcon,
+    'agriculture and land': CustomIcons.AgriIcon,
+    'road and logistics': CustomIcons.LogisticsIcon,
+    'busa gonofa': CustomIcons.ReliefIcon,
+    'finance office': CustomIcons.TreasuryIcon,
+    'peace and militia': CustomIcons.SecurityIcon,
+    'health office': CustomIcons.HealthIcon,
+    'people\'s issues': CustomIcons.PublicDialogueIcon,
+    'education office': CustomIcons.EducationIcon,
+    'trade': CustomIcons.TradeIcon,
+    'revenues office': CustomIcons.RevenueIcon,
+    'water': CustomIcons.WaterIcon,
+    'municipality': CustomIcons.CityIcon,
+    'growth': CustomIcons.GrowthIcon,
+    'strategic': CustomIcons.StrategicPlanIcon,
+    'attorney': CustomIcons.JusticeIcon,
+    'agriculture': CustomIcons.AgriIcon,
+    'education': CustomIcons.EducationIcon,
+    'health': CustomIcons.HealthIcon,
+    'administration': CustomIcons.AdminBuildingIcon,
+    'finance': CustomIcons.TreasuryIcon,
+    'security': CustomIcons.SecurityIcon,
+    'justice': CustomIcons.JusticeIcon,
 };
 
 export default function Sectors({ lang }: SectorsProps) {
@@ -111,7 +84,7 @@ export default function Sectors({ lang }: SectorsProps) {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-woreda-gold/20 border border-woreda-gold/30 text-woreda-gold text-xs font-black uppercase tracking-[0.2em] mb-8">
-              <LayoutGrid className="w-4 h-4" />
+              <CustomIcons.LayoutIcon className="w-4 h-4" />
               Institutional Framework
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
@@ -155,8 +128,16 @@ export default function Sectors({ lang }: SectorsProps) {
               <AnimatePresence mode="popLayout">
                 {filteredSectors.map((sector, i) => {
                   const sectorName = sector.name_en?.toLowerCase() || "";
-                  const iconKey = sector.icon?.toLowerCase() || sectorName.split(' ')[0];
-                  const Icon = iconMap[iconKey] || Building2;
+                  const searchKey = sector.icon_name?.toLowerCase() || sectorName;
+                  let Icon = CustomIcons.AdminBuildingIcon;
+
+                  // Try exact match first, then partial matches
+                  if (iconMap[searchKey]) {
+                      Icon = iconMap[searchKey];
+                  } else {
+                      const foundKey = Object.keys(iconMap).find(key => searchKey.includes(key));
+                      if (foundKey) Icon = iconMap[foundKey];
+                  }
                   
                   return (
                     <motion.div
@@ -177,9 +158,10 @@ export default function Sectors({ lang }: SectorsProps) {
                         </div>
 
                         <div className="relative z-10">
-                          <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-woreda-green group-hover:text-white transition-all duration-500 mb-10 shadow-inner">
-                            <Icon className="w-7 h-7" />
-                          </div>
+                          <div className="w-16 h-16 rounded-[2rem] bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 mb-8 shadow-2xl group-hover:scale-110 transition-transform">
+                  <CustomIcons.LayoutIcon className="w-8 h-8" />
+                </div>
+          
 
                           <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-woreda-green transition-colors">
                             {getLocalized(sector, 'name', lang)}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, Calendar, MapPin, Search, ArrowRight, BellRing } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchEvents } from '../services/api';
 import { getImageUrl } from '../config';
@@ -55,7 +56,7 @@ export default function Events({ lang }: EventsProps) {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-500 text-xs font-black uppercase tracking-[0.2em] mb-8">
-                            <BellRing className="w-4 h-4" />
+                            <CustomIcons.BellIcon className="w-4 h-4" />
                             Community Agenda
                         </div>
                         <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
@@ -128,14 +129,14 @@ export default function Events({ lang }: EventsProps) {
 
                                             <div className="sm:w-3/5 p-10 flex flex-col">
                                                 <div className="flex flex-wrap items-center gap-6 text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] mb-6">
-                                                    <span className="flex items-center gap-2 text-woreda-green">
-                                                        <Calendar className="w-4 h-4" />
-                                                        {event.event_date ? new Date(event.event_date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : "TBA"}
-                                                    </span>
-                                                    <span className="flex items-center gap-2">
-                                                        <MapPin className="w-4 h-4" />
-                                                        {getLocalized(event, 'location', lang) || "Abuna Ginde Beret"}
-                                                    </span>
+                                                    <div className="flex items-center gap-2 text-slate-500">
+                                                    <CustomIcons.CalendarIcon className="w-4 h-4 text-blue-500" />
+                                                    <span className="text-sm font-medium">{new Date(event.date).toLocaleDateString(lang === 'en' ? 'en-US' : 'am-ET', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-slate-500">
+                                                    <CustomIcons.LocationIcon className="w-4 h-4 text-blue-500" />
+                                                    <span className="text-sm font-medium">{getLocalized(event, 'location', lang)}</span>
+                                                </div>
                                                 </div>
 
                                                 <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-woreda-green transition-colors leading-tight">
@@ -164,9 +165,11 @@ export default function Events({ lang }: EventsProps) {
                             </AnimatePresence>
                         ) : (
                             <div className="col-span-2 text-center py-24">
-                                <Search className="w-16 h-16 text-slate-100 mx-auto mb-6" />
-                                <h3 className="text-2xl font-bold text-slate-900 mb-2">No results found</h3>
-                                <p className="text-slate-500 font-light">There are no events currently listed in this category.</p>
+                                <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <CustomIcons.CalendarIcon className="w-10 h-10 text-slate-300" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-2">{t.noEventsFound}</h3>
+                                <p className="text-slate-500 font-light">Stay tuned for future announcements and community gatherings.</p>
                             </div>
                         )}
                     </div>

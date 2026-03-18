@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import {
-  Tractor,
-  School,
-  HeartPulse,
-  Building2,
-  ChevronLeft,
-  Mail,
-  ArrowRight,
-  Briefcase,
-  ShieldCheck,
-  Droplets,
-  Gavel,
-  Newspaper
-} from 'lucide-react';
+import { ChevronLeft, ArrowRight, Mail } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchSectorById } from '../services/api';
 import { getImageUrl } from '../config';
@@ -25,15 +13,15 @@ interface SectorDetailProps {
 }
 
 const iconMap: Record<string, any> = {
-  agriculture: Tractor,
-  education: School,
-  health: HeartPulse,
-  administration: Building2,
-  finance: Briefcase,
-  security: ShieldCheck,
-  water: Droplets,
-  justice: Gavel,
-  trade: Newspaper
+  agriculture: CustomIcons.AgriIcon,
+  education: CustomIcons.SchoolIcon,
+  health: CustomIcons.HealthIcon,
+  administration: CustomIcons.AdminBuildingIcon,
+  finance: CustomIcons.TreasuryIcon,
+  security: CustomIcons.SecurityIcon,
+  water: CustomIcons.WaterIcon,
+  justice: CustomIcons.GovernanceIcon,
+  trade: CustomIcons.TradeIcon
 };
 
 export default function SectorDetail({ lang }: SectorDetailProps) {
@@ -75,7 +63,7 @@ export default function SectorDetail({ lang }: SectorDetailProps) {
     );
   }
 
-  const Icon = iconMap[sector.slug] || iconMap[sector.name.toLowerCase()] || Building2;
+  const Icon = iconMap[sector.slug] || iconMap[sector.name.toLowerCase()] || CustomIcons.AdminBuildingIcon;
 
   return (
     <div className="pt-24">

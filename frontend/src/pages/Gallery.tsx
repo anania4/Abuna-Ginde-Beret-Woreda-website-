@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Image as ImageIcon, X, ZoomIn, Camera, History, Target, ArrowRight } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchGalleries } from '../services/api';
 import { getImageUrl } from '../config';
@@ -49,8 +49,8 @@ export default function Gallery({ lang }: GalleryProps) {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-woreda-green/20 border border-woreda-green/30 text-woreda-green text-xs font-black uppercase tracking-[0.2em] mb-8">
-                            <Camera className="w-4 h-4" />
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8 backdrop-blur-md border border-white/10">
+                            <CustomIcons.CameraIcon className="w-4 h-4" />
                             Visual Archive
                         </div>
                         <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
@@ -93,8 +93,8 @@ export default function Gallery({ lang }: GalleryProps) {
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     
                                     <div className="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
-                                        <div className="flex items-center gap-2 text-[10px] font-black text-woreda-green uppercase tracking-[0.2em] mb-4 bg-white/10 backdrop-blur w-fit px-3 py-1 rounded-lg">
-                                            <ZoomIn className="w-3 h-3" /> Press to Expand
+                                        <div className="flex items-center gap-2 text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em] mb-4 bg-white/10 backdrop-blur w-fit px-3 py-1 rounded-lg">
+                                            <CustomIcons.ZoomIcon className="w-3 h-3" /> Press to Expand
                                         </div>
                                         <h3 className="text-2xl font-black text-white tracking-tight leading-none mb-2">
                                             {getLocalized(item, 'title', lang)}
@@ -110,7 +110,7 @@ export default function Gallery({ lang }: GalleryProps) {
 
                     {!loading && gallery.length === 0 && (
                         <div className="text-center py-24">
-                            <ImageIcon className="w-16 h-16 text-slate-100 mx-auto mb-6" />
+                            <CustomIcons.ImageIcon className="w-16 h-16 text-slate-100 mx-auto mb-6" />
                             <h3 className="text-2xl font-bold text-slate-900 mb-2">Archive Empty</h3>
                             <p className="text-slate-500 font-light">No visual records found in the repository.</p>
                         </div>
@@ -132,7 +132,7 @@ export default function Gallery({ lang }: GalleryProps) {
                             className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors"
                             onClick={() => setSelectedImage(null)}
                         >
-                            <X className="w-10 h-10" />
+                            <CustomIcons.CloseIcon className="w-10 h-10" />
                         </button>
                         
                         <div className="max-w-6xl w-full flex flex-col items-center">

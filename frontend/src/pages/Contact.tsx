@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Phone, Mail, Clock, Plus, Minus, Send, MessageSquare, ShieldCheck, Globe } from 'lucide-react';
+import { Plus, Minus, Send, Globe } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchFAQs, fetchGlobalSettings } from '../services/api';
 
@@ -52,8 +53,8 @@ export default function Contact({ lang }: ContactProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-woreda-blue/20 border border-woreda-blue/30 text-woreda-blue text-xs font-black uppercase tracking-[0.2em] mb-8">
-              <MessageSquare className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-black uppercase tracking-[0.2em] mb-6 backdrop-blur-md border border-white/10">
+              <CustomIcons.MessageIcon className="w-4 h-4" />
               Institutional Support
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
@@ -74,10 +75,10 @@ export default function Contact({ lang }: ContactProps) {
             {/* LEFT: INFO CARDS */}
             <div className="lg:col-span-4 space-y-6">
               {[
-                { icon: <MapPin />, label: t.addressLabel, value: t.addressValue, color: "text-emerald-500" },
-                { icon: <Phone />, label: t.phoneLabel, value: globalSettings?.phone || "+251 11 XXX XXXX", color: "text-blue-500" },
-                { icon: <Mail />, label: t.emailLabel, value: globalSettings?.email || "info@abunagindeberet.gov.et", color: "text-amber-500" },
-                { icon: <Clock />, label: t.officeHoursLabel, value: t.officeHoursValue, color: "text-purple-500" },
+                { icon: <CustomIcons.LocationIcon />, label: t.addressLabel, value: t.addressValue, color: "text-emerald-600" },
+                { icon: <CustomIcons.PhoneIcon />, label: t.phoneLabel, value: globalSettings?.phone || "+251 11 XXX XXXX", color: "text-blue-600" },
+                { icon: <CustomIcons.MailIcon />, label: t.emailLabel, value: globalSettings?.email || "info@abunagindeberet.gov.et", color: "text-amber-600" },
+                { icon: <CustomIcons.ClockIcon />, label: t.officeHoursLabel, value: t.officeHoursValue, color: "text-indigo-600" },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -153,7 +154,7 @@ export default function Contact({ lang }: ContactProps) {
                       ></textarea>
                     </div>
                     <button className="inline-flex items-center justify-center gap-4 px-12 py-6 bg-slate-900 text-white font-black rounded-2xl shadow-xl hover:bg-emerald-600 transition-all group uppercase tracking-widest text-xs">
-                      Dispatch Message <Send className="w-5 h-5 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
+                      Dispatch Message <CustomIcons.SendIcon className="w-5 h-5 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
                     </button>
                   </form>
                 </div>
@@ -169,8 +170,8 @@ export default function Contact({ lang }: ContactProps) {
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-24">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-500 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+              <CustomIcons.IntegrityIcon className="w-4 h-4" />
               Information Repository
             </div>
             <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tight">{t.faqTitle}</h2>

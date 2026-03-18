@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Globe, Menu, X, Facebook, Twitter, Instagram, ExternalLink } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { motion, AnimatePresence } from 'motion/react';
 import { translations, Language } from '../constants';
 
@@ -50,9 +51,9 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || location.pathname !== '/' ? 'glass py-2 gov-shadow' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-woreda-green rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                A
+            <Link to="/" className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-woreda-green/10 rounded-2xl flex items-center justify-center text-woreda-green shadow-sm border border-woreda-green/20 group hover:bg-woreda-green hover:text-white transition-all duration-500">
+                <CustomIcons.InstitutionalBadgeIcon className="w-7 h-7" />
               </div>
               <div>
                 <h1 className={`text-lg font-bold leading-tight ${scrolled || location.pathname !== '/' ? 'text-slate-900' : 'text-white'}`}>{t.title}</h1>
@@ -75,7 +76,7 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
                 onClick={toggleLang}
                 className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-700 hover:bg-slate-50 transition-all shadow-sm"
               >
-                <Globe className="w-4 h-4 text-woreda-green" />
+                <CustomIcons.GlobeIcon className="w-4 h-4 text-woreda-green" />
                 {lang.toUpperCase()}
               </button>
             </div>
@@ -83,7 +84,7 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center gap-4">
               <button onClick={toggleLang} className={`p-2 ${scrolled || location.pathname !== '/' ? 'text-slate-600' : 'text-white'}`}>
-                <Globe className="w-5 h-5" />
+                <CustomIcons.GlobeIcon className="w-5 h-5" />
               </button>
               <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`p-2 ${scrolled || location.pathname !== '/' ? 'text-slate-600' : 'text-white'}`}>
                 {isMenuOpen ? <X /> : <Menu />}
@@ -124,9 +125,9 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-woreda-green rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  A
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-woreda-green rounded-2xl flex items-center justify-center text-white shadow-lg">
+                  <CustomIcons.InstitutionalBadgeIcon className="w-7 h-7" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold leading-tight">{t.title}</h3>
@@ -137,9 +138,13 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
                 {t.footerTagline}
               </p>
               <div className="flex gap-4">
-                {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                  <a key={i} href="#" className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-woreda-green transition-all">
-                    <Icon className="w-5 h-5" />
+                {[
+                  { icon: CustomIcons.FacebookIcon, href: "#" },
+                  { icon: CustomIcons.TwitterIcon, href: "#" },
+                  { icon: CustomIcons.InstagramIcon, href: "#" }
+                ].map((social, i) => (
+                  <a key={i} href={social.href} className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-woreda-green transition-all group">
+                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   </a>
                 ))}
               </div>
@@ -159,9 +164,9 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-slate-400">Resources</h4>
               <ul className="space-y-4 text-slate-300">
-                <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors">Public Documents <ExternalLink className="w-3 h-3" /></a></li>
-                <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors">Tenders <ExternalLink className="w-3 h-3" /></a></li>
-                <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors">Job Openings <ExternalLink className="w-3 h-3" /></a></li>
+                <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors">Public Documents <CustomIcons.ExternalLinkIcon className="w-3 h-3" /></a></li>
+                <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors">Tenders <CustomIcons.ExternalLinkIcon className="w-3 h-3" /></a></li>
+                <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors">Job Openings <CustomIcons.ExternalLinkIcon className="w-3 h-3" /></a></li>
               </ul>
             </div>
           </div>

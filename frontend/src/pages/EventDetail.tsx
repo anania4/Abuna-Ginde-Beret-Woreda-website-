@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Calendar, MapPin, Tag } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchEventById } from '../services/api';
 import { getImageUrl } from '../config';
@@ -85,21 +86,21 @@ export default function EventDetail({ lang }: EventDetailProps) {
                     <div className="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b border-slate-100">
                         {event.event_date && (
                             <div className="flex items-center gap-2 text-woreda-green font-bold bg-emerald-50 px-4 py-2 rounded-lg">
-                                <Calendar className="w-5 h-5" />
+                                <CustomIcons.CalendarIcon className="w-5 h-5" />
                                 {new Date(event.event_date).toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                             </div>
                         )}
 
                         {event.location && (
                             <div className="flex items-center gap-2 text-slate-600 font-medium">
-                                <MapPin className="w-5 h-5" />
+                                <CustomIcons.LocationIcon className="w-5 h-5" />
                                 {getLocalized(event, 'location', lang)}
                             </div>
                         )}
 
                         {event.category && (
                             <div className="flex items-center gap-2 text-slate-600 font-medium">
-                                <Tag className="w-5 h-5" />
+                                <CustomIcons.TagIcon className="w-5 h-5" />
                                 {event.category}
                             </div>
                         )}

@@ -1,32 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
+import { ChevronRight, ChevronLeft, ArrowRight, ArrowLeft } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  ChevronRight,
-  ChevronLeft,
-  Users,
-  MapPin,
-  Tractor,
-  HeartPulse,
-  ArrowRight,
-  Quote,
-  CheckCircle2,
-  ExternalLink,
-  School,
-  ShieldCheck,
-  Newspaper,
-  Gavel,
-  Droplets,
-  Building2,
-  Briefcase,
-  Calendar,
-  X,
-  Tag,
-  DollarSign,
-  Layout
-} from 'lucide-react';
 import { translations, Language } from '../constants';
 import {
   fetchNews,
@@ -39,6 +16,7 @@ import {
 } from '../services/api';
 import { getImageUrl } from '../config';
 import { getLocalized } from '../utils/lang';
+import * as CustomIcons from '../components/CustomIcons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -299,7 +277,7 @@ export default function Home({ lang }: HomeProps) {
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-100">
-                <Users className="w-3 h-3 text-emerald-500" />
+                <CustomIcons.UsersIcon className="w-3 h-3 text-emerald-500" />
                 Community Insight
               </div>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tighter leading-tight">
@@ -311,10 +289,10 @@ export default function Home({ lang }: HomeProps) {
               
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { label: t.statsResidents, value: (globalSettings as any)?.resident_count?.toLocaleString() || "150,000+", icon: Users, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
-                  { label: "Kebeles", value: (globalSettings as any)?.kebele_count || "44", icon: MapPin, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
-                  { label: "Agriculture", value: (globalSettings as any)?.agriculture_percentage || "95%", icon: Tractor, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
-                  { label: "Education", value: (globalSettings as any)?.school_count || "44", icon: School, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
+                  { label: t.statsResidents, value: (globalSettings as any)?.resident_count?.toLocaleString() || "150,000+", icon: CustomIcons.PopulationIcon, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
+                  { label: "Kebeles", value: (globalSettings as any)?.kebele_count || "44", icon: CustomIcons.MapPinIcon, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
+                  { label: "Agriculture", value: (globalSettings as any)?.agriculture_percentage || "95%", icon: CustomIcons.AgriIcon, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
+                  { label: "Education", value: (globalSettings as any)?.school_count || "44", icon: CustomIcons.EducationIcon, color: "text-blue-600", bg: "bg-blue-50", accent: "group-hover:text-emerald-500" },
                 ].map((stat, i) => (
                   <div key={i} className="group stat-item flex items-center gap-4 p-5 rounded-[2rem] border border-slate-50 bg-slate-50/30 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-500">
                     <div className={`p-3 rounded-xl ${stat.bg} shadow-sm ${stat.color} ${stat.accent} transition-colors`}>
@@ -356,7 +334,7 @@ export default function Home({ lang }: HomeProps) {
                 transition={{ delay: 0.2 }}
               >
                 <div className="flex items-start gap-4">
-                  <Quote className="w-8 h-8 text-blue-500 opacity-20 flex-shrink-0" />
+                    <CustomIcons.QuoteIcon className="w-20 h-20 text-blue-300/30 mb-8" />
                   <p className="text-base font-medium text-slate-800 italic leading-relaxed">
                     "A vibrant community where heritage meets progress, fostering sustainable growth for every citizen."
                   </p>
@@ -367,7 +345,7 @@ export default function Home({ lang }: HomeProps) {
                     <div className="text-[10px] font-black text-blue-600 uppercase tracking-widest mt-1">Regional Excellence</div>
                   </div>
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                    <CustomIcons.CheckCircleIcon className="w-5 h-5 text-emerald-500" />
                   </div>
                 </div>
               </motion.div>
@@ -395,7 +373,7 @@ export default function Home({ lang }: HomeProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-12">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-2xl shadow-blue-500/20">
-                <Layout className="w-3.5 h-3.5 text-emerald-400" />
+                <CustomIcons.LayoutIcon className="w-3.5 h-3.5 text-emerald-400" />
                 Institutional Framework
               </div>
               <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-[0.9] drop-shadow-2xl">
@@ -417,14 +395,46 @@ export default function Home({ lang }: HomeProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sectors.length > 0 ? sectors.map((sector, i) => {
-              const sectorName = sector.name_en?.toLowerCase() || "";
+              const sectorName = (sector.name_en || sector.name || "").toLowerCase();
               const localIconMap: Record<string, any> = {
-                agriculture: Tractor, education: School, health: HeartPulse,
-                administration: Building2, finance: DollarSign, security: ShieldCheck,
-                water: Droplets, justice: Gavel, trade: Briefcase,
+                'administration office': CustomIcons.AdminBuildingIcon,
+                'the house office': CustomIcons.CouncilIcon,
+                'agriculture and land': CustomIcons.AgriIcon,
+                'road and logistics': CustomIcons.LogisticsIcon,
+                'busa gonofa': CustomIcons.ReliefIcon,
+                'finance office': CustomIcons.TreasuryIcon,
+                'peace and militia': CustomIcons.SecurityIcon,
+                'health office': CustomIcons.HealthIcon,
+                'people\'s issues': CustomIcons.PublicDialogueIcon,
+                'education office': CustomIcons.EducationIcon,
+                'trade': CustomIcons.TradeIcon,
+                'revenues office': CustomIcons.RevenueIcon,
+                'water': CustomIcons.WaterIcon,
+                'municipality': CustomIcons.CityIcon,
+                'growth': CustomIcons.GrowthIcon,
+                'strategic': CustomIcons.StrategicPlanIcon,
+                'attorney': CustomIcons.JusticeIcon,
+                // Fallbacks for specific keyword matches
+                agriculture: CustomIcons.AgriIcon,
+                education: CustomIcons.EducationIcon,
+                health: CustomIcons.HealthIcon,
+                administration: CustomIcons.AdminBuildingIcon,
+                finance: CustomIcons.TreasuryIcon,
+                security: CustomIcons.SecurityIcon,
+                justice: CustomIcons.JusticeIcon,
               };
-              const iconKey = sector.icon_name?.toLowerCase() || sectorName.split(' ')[0];
-              const Icon = localIconMap[iconKey] || Building2;
+
+              // Identify icon based on name or specified icon_name
+              const searchKey = sector.icon_name?.toLowerCase() || sectorName;
+              let Icon = CustomIcons.AdminBuildingIcon; // Default
+
+              // Try exact match first, then partial matches
+              if (localIconMap[searchKey]) {
+                Icon = localIconMap[searchKey];
+              } else {
+                const foundKey = Object.keys(localIconMap).find(key => searchKey.includes(key));
+                if (foundKey) Icon = localIconMap[foundKey];
+              }
 
               return (
                 <motion.div
@@ -485,7 +495,7 @@ export default function Home({ lang }: HomeProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-                <Newspaper className="w-3.5 h-3.5" />
+                <CustomIcons.NewspaperIcon className="w-3.5 h-3.5" />
                 News Bureau
               </div>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">{t.latestNews}</h2>
@@ -565,7 +575,7 @@ export default function Home({ lang }: HomeProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 text-sky-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-50">
-                <Layout className="w-3.5 h-3.5 text-emerald-500" />
+                <CustomIcons.LayoutIcon className="w-3.5 h-3.5 text-emerald-500" />
                 Visual Archive
               </div>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Community <span className="border-b-4 border-emerald-500/20">Gallery</span></h2>
@@ -619,7 +629,7 @@ export default function Home({ lang }: HomeProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-100">
-              <Briefcase className="w-3.5 h-3.5 text-emerald-500" />
+              <CustomIcons.BriefcaseIcon className="w-3.5 h-3.5 text-emerald-500" />
               Strategic Growth
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Development <span className="text-blue-600">Progress</span></h2>
@@ -659,7 +669,7 @@ export default function Home({ lang }: HomeProps) {
                 <div className="flex items-center gap-6 mb-10 text-[10px] text-slate-400 font-black uppercase tracking-widest border-y border-slate-50 py-4">
                   {project.start_date && (
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-3.5 h-3.5" />
+                      <CustomIcons.CalendarIcon className="w-3.5 h-3.5" />
                       {new Date(project.start_date).toLocaleDateString()}
                     </div>
                   )}
@@ -698,7 +708,7 @@ export default function Home({ lang }: HomeProps) {
                   className="w-full mt-10 p-5 bg-slate-900 text-white font-black rounded-2xl hover:bg-blue-600 transition-all flex items-center justify-center gap-3 uppercase tracking-widest text-[10px] shadow-xl group/btn overflow-hidden relative"
                 >
                   <span className="relative z-10">Project Dashboard</span>
-                  <ExternalLink className="w-4 h-4 relative z-10" />
+                  <CustomIcons.ExternalLinkIcon className="w-4 h-4 relative z-10" />
                   <div className="absolute inset-0 bg-emerald-500 opacity-0 group-hover/btn:opacity-10 transition-opacity" />
                 </button>
               </motion.div>
@@ -772,7 +782,7 @@ export default function Home({ lang }: HomeProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-              <Quote className="w-3.5 h-3.5" />
+              <CustomIcons.QuoteIcon className="w-3.5 h-3.5" />
               Public Sentiment
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Voice of the People</h2>
@@ -790,7 +800,7 @@ export default function Home({ lang }: HomeProps) {
                 whileHover={{ y: -10 }}
                 className="p-12 bg-slate-50 rounded-[3rem] border border-slate-100 relative shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden"
               >
-                <Quote className="w-16 h-16 text-emerald-600 opacity-[0.03] absolute top-8 left-8" />
+                <CustomIcons.QuoteIcon className="w-16 h-16 text-emerald-600 opacity-[0.03] absolute top-8 left-8" />
                 <p className="text-slate-600 italic mb-10 relative z-10 pt-6 leading-relaxed font-light text-lg">"{voice.text}"</p>
                 <div className="flex items-center gap-5 mt-auto pt-8 border-t border-slate-100">
                   <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center font-black text-emerald-600 shadow-sm border border-slate-100 text-xl">{voice.name[0]}</div>
@@ -818,7 +828,7 @@ export default function Home({ lang }: HomeProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-100/30">
-                <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                <CustomIcons.CalendarIcon className="w-3.5 h-3.5 text-emerald-500" />
                 Regional Agenda
               </div>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">Upcoming <span className="text-blue-600">Events</span></h2>
@@ -857,7 +867,7 @@ export default function Home({ lang }: HomeProps) {
                         />
                       ) : (
                         <div className="w-full h-full bg-slate-50 flex items-center justify-center">
-                          <Calendar className="w-10 h-10 text-slate-200" />
+                          <CustomIcons.AdminBuildingIcon className="w-12 h-12 text-slate-100 mb-8" />
                         </div>
                       )}
 
@@ -868,7 +878,7 @@ export default function Home({ lang }: HomeProps) {
                     
                     <div className="p-10 flex flex-col flex-grow">
                       <div className="flex items-center gap-2 text-[10px] text-blue-600 font-black uppercase tracking-[0.2em] mb-4">
-                        <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                        <CustomIcons.CalendarIcon className="w-3.5 h-3.5 text-emerald-500" />
                         {eventItem.event_date ? new Date(eventItem.event_date).toLocaleDateString('en-US', {
                           month: 'long', day: 'numeric', year: 'numeric'
                         }) : 'Date TBA'}
@@ -910,7 +920,7 @@ export default function Home({ lang }: HomeProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-blue-500/10 border border-emerald-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-12 shadow-2xl">
-              <MapPin className="w-4 h-4 text-emerald-400" />
+              <CustomIcons.MapPinIcon className="w-4 h-4 text-emerald-400" />
               Administrative Geometry
             </div>
             <h2 className="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-tight drop-shadow-2xl">
@@ -971,7 +981,7 @@ export default function Home({ lang }: HomeProps) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-black text-blue-600 uppercase tracking-widest hover:underline"
           >
-            Get Directions <ExternalLink className="w-4 h-4" />
+            Get Directions <CustomIcons.ExternalLinkIcon className="w-4 h-4" />
           </a>
         </div>
       </motion.section>
@@ -1015,14 +1025,16 @@ const ProjectModal = ({ project, onClose, lang }: { project: any, onClose: () =>
               />
             ) : (
               <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-                <Layout className="w-20 h-20 text-slate-200" />
+                <div className="w-20 h-20 bg-blue-500/10 rounded-[2rem] flex items-center justify-center text-blue-600 mb-8 group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                      <CustomIcons.InstitutionalBadgeIcon className="w-10 h-10" />
+                    </div>
               </div>
             )}
             <button 
               onClick={onClose}
               className="absolute top-6 left-6 w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all md:hidden"
             >
-              <X className="w-6 h-6" />
+              <CustomIcons.CloseIcon className="w-6 h-6" />
             </button>
           </div>
 
@@ -1036,7 +1048,7 @@ const ProjectModal = ({ project, onClose, lang }: { project: any, onClose: () =>
                 onClick={onClose}
                 className="hidden md:flex w-10 h-10 bg-slate-50 rounded-full items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
               >
-                <X className="w-5 h-5" />
+                <CustomIcons.CloseIcon className="w-5 h-5" />
               </button>
             </div>
 
@@ -1047,12 +1059,12 @@ const ProjectModal = ({ project, onClose, lang }: { project: any, onClose: () =>
             <div className="flex flex-wrap gap-4 mb-8">
               {project.category && (
                 <div className="flex items-center gap-2 px-3 py-1 bg-slate-50 rounded-lg text-slate-500 text-xs font-bold border border-slate-100">
-                  <Tag className="w-3 h-3" /> {project.category}
+                  <CustomIcons.TagIcon className="w-3 h-3" /> {project.category}
                 </div>
               )}
               {project.beneficiaries && (
                 <div className="flex items-center gap-2 px-3 py-1 bg-slate-50 rounded-lg text-slate-500 text-xs font-bold border border-slate-100">
-                  <Users className="w-3 h-3" /> {project.beneficiaries}
+                  <CustomIcons.UsersIcon className="w-3 h-3" /> {project.beneficiaries}
                 </div>
               )}
             </div>
@@ -1082,7 +1094,7 @@ const ProjectModal = ({ project, onClose, lang }: { project: any, onClose: () =>
               <div>
                 <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Timeline</div>
                 <div className="text-sm font-bold text-slate-700 flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-emerald-500" />
+                  <CustomIcons.CalendarIcon className="w-4 h-4 text-emerald-500" />
                   {project.start_date ? new Date(project.start_date).toLocaleDateString() : 'TBA'} - 
                   {project.end_date ? new Date(project.end_date).toLocaleDateString() : 'TBA'}
                 </div>
@@ -1090,7 +1102,7 @@ const ProjectModal = ({ project, onClose, lang }: { project: any, onClose: () =>
               <div>
                 <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Budget Allocation</div>
                 <div className="text-sm font-bold text-slate-700 flex items-center gap-2">
-                  <DollarSign className="w-4 h-4 text-emerald-500" />
+                  <CustomIcons.DollarSignIcon className="w-4 h-4 text-emerald-500" />
                   {project.budget || 'Confidential'}
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Users, Building2, Home as HomeIcon, Search, ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchKebeles } from '../services/api';
 import { getLocalized } from '../utils/lang';
@@ -55,8 +56,8 @@ export default function Kebeles({ lang }: KebelesProps) {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-500 text-xs font-black uppercase tracking-[0.2em] mb-8">
-                            <ShieldCheck className="w-4 h-4" />
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-500 text-[10px] font-black uppercase tracking-[0.2em] mb-8 backdrop-blur-md">
+                            <CustomIcons.IntegrityIcon className="w-4 h-4" />
                             Administrative Backbone
                         </div>
                         <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
@@ -75,7 +76,7 @@ export default function Kebeles({ lang }: KebelesProps) {
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                         {/* Search */}
                         <div className="relative w-full lg:max-w-md">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <CustomIcons.SearchIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <input 
                                 type="text"
                                 placeholder="Locate a specific kebele..."
@@ -139,7 +140,7 @@ export default function Kebeles({ lang }: KebelesProps) {
 
                                             <div className="flex items-center gap-6 mb-10">
                                                 <div className={`p-4 rounded-2xl shadow-inner ${kebele.type === 'Urban' ? 'bg-blue-50 text-blue-600' : 'bg-emerald-50 text-emerald-600'}`}>
-                                                    {kebele.type === 'Urban' ? <Building2 className="w-8 h-8" /> : <HomeIcon className="w-8 h-8" />}
+                                                    {kebele.type === 'Urban' ? <CustomIcons.AdminBuildingIcon className="w-8 h-8" /> : <CustomIcons.HomeIcon className="w-8 h-8" />}
                                                 </div>
                                                 <div>
                                                     <h3 className="text-2xl font-black text-slate-900 tracking-tight leading-none mb-2">{getLocalized(kebele, 'name', lang)}</h3>
@@ -153,8 +154,8 @@ export default function Kebeles({ lang }: KebelesProps) {
                                                 {kebele.population && (
                                                     <div className="flex items-center justify-between py-4 border-b border-slate-50">
                                                         <span className="text-[10px] font-black uppercase tracking-[0.1em] text-slate-400 flex items-center gap-2">
-                                                            <Users className="w-4 h-4" /> Census Data
-                                                        </span>
+                                                        <CustomIcons.PopulationIcon className="w-4 h-4" /> Census Data
+                                                    </span>
                                                         <span className="font-bold text-slate-900">{kebele.population}</span>
                                                     </div>
                                                 )}

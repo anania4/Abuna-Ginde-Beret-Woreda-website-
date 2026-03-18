@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, ExternalLink, Search, ShieldCheck, Briefcase, FileText, ArrowRight, Zap, Phone } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchServices } from '../services/api';
 import { getLocalized } from '../utils/lang';
@@ -36,10 +37,10 @@ export default function Services({ lang }: ServicesProps) {
     );
 
     const iconMap: { [key: string]: any } = {
-        'default': <FileText className="w-8 h-8" />,
-        'licensing': <ShieldCheck className="w-8 h-8" />,
-        'business': <Briefcase className="w-8 h-8" />,
-        'rapid': <Zap className="w-8 h-8" />,
+        'default': <CustomIcons.FileIcon className="w-8 h-8" />,
+        'licensing': <CustomIcons.LicensingIcon className="w-8 h-8" />,
+        'business': <CustomIcons.BusinessIcon className="w-8 h-8" />,
+        'rapid': <CustomIcons.RapidIcon className="w-8 h-8" />,
     };
 
     return (
@@ -61,8 +62,8 @@ export default function Services({ lang }: ServicesProps) {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-woreda-blue/20 border border-woreda-blue/30 text-woreda-blue text-xs font-black uppercase tracking-[0.2em] mb-8">
-                            <ShieldCheck className="w-4 h-4" />
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-black uppercase tracking-[0.2em] mb-6 backdrop-blur-md border border-white/10">
+                            <CustomIcons.LicensingIcon className="w-4 h-4" />
                             Public Service Charter
                         </div>
                         <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
@@ -80,14 +81,14 @@ export default function Services({ lang }: ServicesProps) {
                         transition={{ delay: 0.4 }}
                         className="mt-12 max-w-xl mx-auto"
                     >
-                        <div className="relative group">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-woreda-blue transition-colors" />
+                        <div className="relative">
+                            <CustomIcons.SearchIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 font-light" />
                             <input 
                                 type="text"
                                 placeholder="What service are you looking for?"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-16 pr-8 py-6 bg-white rounded-2xl shadow-2xl border-none text-slate-900 placeholder:text-slate-400 focus:ring-4 focus:ring-woreda-blue/20 transition-all text-lg"
+                                className="w-full pl-16 pr-8 py-6 bg-white border-2 border-slate-100 rounded-3xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 transition-all font-light shadow-2xl shadow-slate-200/50"
                             />
                         </div>
                     </motion.div>
@@ -139,7 +140,7 @@ export default function Services({ lang }: ServicesProps) {
                                                         rel="noopener noreferrer"
                                                         className="text-[10px] font-black text-slate-400 group-hover:text-woreda-blue uppercase tracking-[0.2em] transition-all flex items-center gap-2"
                                                     >
-                                                        Access Portal <ExternalLink className="w-4 h-4" />
+                                                        Access Portal <CustomIcons.ExternalLinkIcon className="w-4 h-4" />
                                                     </a>
                                                 ) : (
                                                     <button className="text-[10px] font-black text-slate-400 group-hover:text-woreda-blue uppercase tracking-[0.2em] transition-all flex items-center gap-2">
@@ -159,7 +160,7 @@ export default function Services({ lang }: ServicesProps) {
 
                     {!loading && filteredServices.length === 0 && (
                         <div className="text-center py-24">
-                            <Search className="w-16 h-16 text-slate-100 mx-auto mb-6" />
+                            <CustomIcons.SearchIcon className="w-16 h-16 text-slate-100 mx-auto mb-6" />
                             <h3 className="text-2xl font-bold text-slate-900 mb-2">No services found</h3>
                             <p className="text-slate-500 font-light">Try searching with a different term.</p>
                         </div>
@@ -170,8 +171,8 @@ export default function Services({ lang }: ServicesProps) {
             {/* HELP SECTION */}
             <section className="py-24 bg-slate-50">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex p-4 bg-woreda-green/10 text-woreda-green rounded-full mb-8">
-                        <Phone className="w-8 h-8" />
+                    <div className="inline-flex p-4 bg-emerald-50 text-emerald-600 rounded-full mb-8">
+                        <CustomIcons.PhoneIcon className="w-8 h-8" />
                     </div>
                     <h2 className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">Need Assistance?</h2>
                     <p className="text-xl text-slate-500 mb-12 font-light">Our help desk is available during office hours to guide you through any application process.</p>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ChevronLeft, Calendar, Share2, Printer } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
+import * as CustomIcons from '../components/CustomIcons';
 import { translations, Language } from '../constants';
 import { fetchNewsById } from '../services/api';
 import { getImageUrl } from '../config';
@@ -62,7 +63,7 @@ export default function NewsDetail({ lang }: NewsDetailProps) {
               {news.category || "General"}
             </span>
             <span className="flex items-center gap-1 text-xs text-slate-400 font-bold uppercase tracking-widest">
-              <Calendar className="w-3 h-3" /> {new Date(news.created_at).toLocaleDateString()}
+              <CustomIcons.CalendarIcon className="w-3 h-3" /> {new Date(news.created_at).toLocaleDateString()}
             </span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight mb-8">
@@ -96,11 +97,11 @@ export default function NewsDetail({ lang }: NewsDetailProps) {
               <div className="p-8 bg-slate-50 rounded-3xl border border-slate-100">
                 <h4 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6">Actions</h4>
                 <div className="flex flex-col gap-4">
-                  <button className="flex items-center gap-3 text-sm font-bold text-slate-600 hover:text-woreda-green transition-colors">
-                    <Share2 className="w-4 h-4" /> Share Article
+                  <button className="flex items-center gap-3 text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">
+                    <CustomIcons.ShareIcon className="w-4 h-4" /> Share Article
                   </button>
-                  <button className="flex items-center gap-3 text-sm font-bold text-slate-600 hover:text-woreda-green transition-colors">
-                    <Printer className="w-4 h-4" /> Print Page
+                  <button className="flex items-center gap-3 text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">
+                    <CustomIcons.PrinterIcon className="w-4 h-4" /> Print Page
                   </button>
                 </div>
               </div>

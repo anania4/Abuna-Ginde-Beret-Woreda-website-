@@ -46,6 +46,10 @@ export interface TranslationStrings {
   footerTagline: string;
   copyright: string;
   adminMessageDesc: string;
+  searchNews: string;
+  noNewsFound: string;
+  searchEvents: string;
+  noEventsFound: string;
 }
 
 export const translations: Record<Language, TranslationStrings> = {
@@ -93,7 +97,11 @@ export const translations: Record<Language, TranslationStrings> = {
     officeHoursValue: "Mon - Fri: 8:30 AM - 12:30 PM, 1:30 PM - 5:30 PM",
     footerTagline: "Highland Resilience – Fertile Lands, Strong Communities, Growing Future",
     copyright: "© 2025 Abune Ginde Beret Woreda Administration. All rights reserved.",
-    adminMessageDesc: "Welcome to Abune Ginde Beret Woreda Administration official website."
+    adminMessageDesc: "Welcome to Abune Ginde Beret Woreda Administration official website.",
+    searchNews: "Search articles and bulletins...",
+    noNewsFound: "No news articles found matching your criteria.",
+    searchEvents: "Search upcoming events...",
+    noEventsFound: "No upcoming events found."
   },
   om: {
     title: "Abune Ginde Beret",
@@ -139,6 +147,10 @@ export const translations: Record<Language, TranslationStrings> = {
     officeHoursValue: "Wiixata - Jimaata: 2:30 - 11:30",
     footerTagline: "Hawaasa iftoominaa fi kutannoodhaan tajaajiluu.",
     copyright: "© 2026 Bulchiinsa Aanaa Abuna Gindabarat. Mirgi hunduu eegamaadha.",
-    adminMessageDesc: "Fuula marsariitii bulchiinsa aanaa Abuna Ginda Baratirratti baga nagaa dhuftan."
+    adminMessageDesc: "Fuula marsariitii bulchiinsa aanaa Abuna Ginda Baratirratti baga nagaa dhuftan.",
+    searchNews: "Oduu fi ibsa barbaadi...",
+    noNewsFound: "Oduun barbaaddan hin argamne.",
+    searchEvents: "Taateewwan dhufan barbaadi...",
+    noEventsFound: "Taateen dhufus hin jiru."
   }
 };
