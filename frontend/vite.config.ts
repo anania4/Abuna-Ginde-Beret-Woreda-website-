@@ -12,6 +12,7 @@ export default defineConfig(() => {
       },
     },
     server: {
+      allowedHosts: true as true,
       proxy: {
         '/admin': 'http://localhost:8000',
         '/api': 'http://localhost:8000',
