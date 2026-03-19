@@ -1,0 +1,5 @@
+{
+  "name": "Abuna Ginde Beret Woreda Administration",
+  "description": "Official portal for Abuna Ginde Beret Woreda, West Shewa Zone, Oromia. Providing government services, news, and community updates.",
+  "requestFramePermissions": ["geolocation"]
+}
